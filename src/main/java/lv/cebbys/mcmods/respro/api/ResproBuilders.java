@@ -1,26 +1,18 @@
 package lv.cebbys.mcmods.respro.api;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import lv.cebbys.mcmods.respro.api.builder.ResourceBuilder;
-import lv.cebbys.mcmods.respro.api.initializer.blockstate.BlockVariantResourceInitializer;
-import lv.cebbys.mcmods.respro.api.initializer.blockstate.multipart.MultipartBlockPropertyResourceInitializer;
-import lv.cebbys.mcmods.respro.api.initializer.blockstate.multipart.MultipartBlockstateResourceInitializer;
-import lv.cebbys.mcmods.respro.api.initializer.blockstate.multipart.MultipartWhenResourceInitializer;
-import lv.cebbys.mcmods.respro.api.initializer.blockstate.variant.VariantBlockPropertyResourceInitializer;
-import lv.cebbys.mcmods.respro.api.initializer.blockstate.variant.VariantBlockstateResourceInitializer;
-import lv.cebbys.mcmods.respro.api.initializer.custre.CustreRecipeResourceInitializer;
-import lv.cebbys.mcmods.respro.api.initializer.kleeslabs.KleeSlabsCompatResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.worldgen.WorldPresetsResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.worldgen.worldpreset.BiomeSourceResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.worldgen.worldpreset.ChunkGeneratorResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.worldgen.worldpreset.DimensionResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.worldgen.worldpreset.WorldPresetResourceInitializer;
 import lv.cebbys.mcmods.respro.component.core.builder.SimpleResourceBuilder;
 import lv.cebbys.mcmods.respro.component.resource.AbstractResource;
-import lv.cebbys.mcmods.respro.component.resource.blockstate.BlockVariantResource;
-import lv.cebbys.mcmods.respro.component.resource.blockstate.multipart.MultipartBlockPropertyResource;
-import lv.cebbys.mcmods.respro.component.resource.blockstate.multipart.MultipartBlockstateResource;
-import lv.cebbys.mcmods.respro.component.resource.blockstate.multipart.MultipartWhenResource;
-import lv.cebbys.mcmods.respro.component.resource.blockstate.variant.VariantBlockPropertyResource;
-import lv.cebbys.mcmods.respro.component.resource.blockstate.variant.VariantBlockstateResource;
-import lv.cebbys.mcmods.respro.component.resource.string.custre.CustreRecipeResource;
-import lv.cebbys.mcmods.respro.component.resource.string.kleeslabs.KleeSlabsCompatResource;
+import lv.cebbys.mcmods.respro.component.resource.string.worldgen.WorldPresetsResource;
+import lv.cebbys.mcmods.respro.component.resource.string.worldgen.worldpreset.BiomeSourceResource;
+import lv.cebbys.mcmods.respro.component.resource.string.worldgen.worldpreset.ChunkGeneratorResource;
+import lv.cebbys.mcmods.respro.component.resource.string.worldgen.worldpreset.DimensionResource;
+import lv.cebbys.mcmods.respro.component.resource.string.worldgen.worldpreset.WorldPresetResource;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
@@ -32,23 +24,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class ResproBuilders {
+public class ResproBuilders
+{
     private static final Logger LOGGER = LoggerFactory.getLogger(ResproBuilders.class);
     private static final BuilderMap BUILDERS = new BuilderMap();
 
     static {
-        // Asset builders
-        registerResproSupplier(VariantBlockstateResourceInitializer.class, VariantBlockstateResource::new);
-        registerResproSupplier(VariantBlockPropertyResourceInitializer.class, VariantBlockPropertyResource::new);
-        registerResproSupplier(BlockVariantResourceInitializer.class, BlockVariantResource::new);
-        registerResproSupplier(MultipartBlockstateResourceInitializer.class, MultipartBlockstateResource::new);
-        registerResproSupplier(MultipartWhenResourceInitializer.class, MultipartWhenResource::new);
-        registerResproSupplier(MultipartBlockPropertyResourceInitializer.class, MultipartBlockPropertyResource::new);
-
         // Data builders
-        registerResproSupplier(CustreRecipeResourceInitializer.class, CustreRecipeResource::new);
-        registerResproSupplier(KleeSlabsCompatResourceInitializer.class, KleeSlabsCompatResource::new);
+        registerResproSupplier(BiomeSourceResourceInitializer.class, BiomeSourceResource::new);
+        registerResproSupplier(ChunkGeneratorResourceInitializer.class, ChunkGeneratorResource::new);
+        registerResproSupplier(DimensionResourceInitializer.class, DimensionResource::new);
+        registerResproSupplier(WorldPresetResourceInitializer.class, WorldPresetResource::new);
+        registerResproSupplier(WorldPresetsResourceInitializer.class, WorldPresetsResource::new);
     }
 
     public static <I, R extends AbstractResource> void registerBuilderSupplier(@NotNull Class<I> clazz, @NotNull RS<I, R> instance) {
@@ -85,7 +72,11 @@ public class ResproBuilders {
         registerBuilderSupplier(clazz, () -> new SimpleResourceBuilder<>(resourceSupplier));
     }
 
-    private static class BuilderMap {
+    private interface RS<I, R extends AbstractResource> extends Supplier<ResourceBuilder<I, R>>
+    {}
+
+    private static class BuilderMap
+    {
         private final Map<Class<?>, Pair<Integer, Supplier<?>>> map = new HashMap<>();
 
         public <I, A extends ResourceBuilder<I, ?>> void set(@NotNull Class<I> key, int priority, @NotNull Supplier<A> value) {
@@ -100,8 +91,5 @@ public class ResproBuilders {
             if (!map.containsKey(key)) return null;
             return (Supplier<A>) map.get(key).getValue();
         }
-    }
-
-    private interface RS<I, R extends AbstractResource> extends Supplier<ResourceBuilder<I, R>> {
     }
 }

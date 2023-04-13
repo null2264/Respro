@@ -1,9 +1,7 @@
 package lv.cebbys.mcmods.respro.component.core;
 
 import lv.cebbys.mcmods.respro.component.resource.AbstractResource;
-import lv.cebbys.mcmods.respro.component.resource.pack.ResproAssetResources;
-import lv.cebbys.mcmods.respro.component.resource.pack.ResproDataResources;
-import lv.cebbys.mcmods.respro.component.resource.pack.ResproPackResources;
+import lv.cebbys.mcmods.respro.component.resource.pack.ResproResourcePack;
 import net.fabricmc.loader.api.FabricLoader;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -18,27 +16,21 @@ import java.util.concurrent.Executors;
 import static lv.cebbys.mcmods.respro.constant.ResproConstants.RESPRO_PACK_ICON_LOCATION;
 import static lv.cebbys.mcmods.respro.constant.ResproConstants.RESPRO_PACK_MCMETA_LOCATION;
 
-public class ResproPackDump {
+public class ResproPackDump
+{
     private static final Logger LOGGER = LoggerFactory.getLogger(ResproPackDump.class);
     private static final Executor EXECUTOR = Executors.newSingleThreadExecutor();
 
-    public void dump(ResproPackResources<?, ?> resources) {
+    public void dump(ResproResourcePack<?, ?> resources) {
         EXECUTOR.execute(() -> dumpResources(resources));
     }
 
-    private void dumpResources(ResproPackResources<?, ?> resources) {
+    private void dumpResources(ResproResourcePack<?, ?> resources) {
         try {
             File resproDump = makeDir(new File(FabricLoader.getInstance().getGameDir().toString() + "/respro"));
             File namespace = makeDir(new File(resproDump, resources.getId().getNamespace()));
             File pack = recreateDir(new File(namespace, resources.getId().getPath()));
-            File data;
-            if (resources instanceof ResproAssetResources) {
-                data = makeDir(pack, "assets");
-            } else if (resources instanceof ResproDataResources) {
-                data = makeDir(pack, "data");
-            } else {
-                throw new RuntimeException("Provided pack does not belong to assets nor data");
-            }
+            File data = makeDir(pack, "data");
             resources.getResources().forEach((location, resource) -> {
                 if (RESPRO_PACK_ICON_LOCATION.equals(location) || RESPRO_PACK_MCMETA_LOCATION.equals(location)) {
                     dumpResource(makeFile(pack, location.getPath()), resource);

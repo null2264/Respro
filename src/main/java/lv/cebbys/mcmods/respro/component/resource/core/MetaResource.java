@@ -1,15 +1,14 @@
 package lv.cebbys.mcmods.respro.component.resource.core;
 
-import lombok.Getter;
 import lv.cebbys.mcmods.respro.api.initializer.core.MetaResourceInitializer;
 import lv.cebbys.mcmods.respro.component.mapper.JsonPart;
 import lv.cebbys.mcmods.respro.component.resource.AbstractJsonObjectResource;
 import lv.cebbys.mcmods.respro.exception.ResourceValidationException;
-import net.minecraft.server.packs.PackType;
+import net.minecraft.resource.ResourceType;
 import org.jetbrains.annotations.NotNull;
 
-@Getter
-public final class MetaResource extends AbstractJsonObjectResource implements MetaResourceInitializer {
+public final class MetaResource extends AbstractJsonObjectResource implements MetaResourceInitializer
+{
     @JsonPart(value = "pack/description")
     private String description;
     @JsonPart(value = "pack/pack_format")
@@ -42,7 +41,15 @@ public final class MetaResource extends AbstractJsonObjectResource implements Me
     }
 
     @Override
-    public boolean belongsTo(@NotNull PackType type) {
+    public boolean belongsTo(@NotNull ResourceType type) {
         return true;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getFormat() {
+        return format;
     }
 }

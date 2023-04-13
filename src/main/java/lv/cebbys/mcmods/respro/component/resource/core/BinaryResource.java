@@ -1,22 +1,15 @@
 package lv.cebbys.mcmods.respro.component.resource.core;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lv.cebbys.mcmods.respro.component.resource.AbstractResource;
 import lv.cebbys.mcmods.respro.exception.ResourceValidationException;
-import net.minecraft.server.packs.PackType;
+import net.minecraft.resource.ResourceType;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-public class BinaryResource extends AbstractResource {
+public class BinaryResource extends AbstractResource
+{
     private byte[] content;
     private boolean nullable;
 
@@ -25,7 +18,7 @@ public class BinaryResource extends AbstractResource {
         return new ByteArrayInputStream(content);
     }
 
-    public boolean belongsTo(@NotNull PackType type) {
+    public boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 

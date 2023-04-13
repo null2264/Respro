@@ -1,11 +1,9 @@
 package lv.cebbys.mcmods.respro.component.resource.core;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lv.cebbys.mcmods.respro.api.initializer.core.ImageResourceInitializer;
 import lv.cebbys.mcmods.respro.component.resource.AbstractResource;
 import lv.cebbys.mcmods.respro.exception.ResourceValidationException;
-import net.minecraft.server.packs.PackType;
+import net.minecraft.resource.ResourceType;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayInputStream;
@@ -13,10 +11,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.function.Supplier;
 
-@NoArgsConstructor
-@AllArgsConstructor
-public class ImageResource extends AbstractResource implements ImageResourceInitializer {
-    private Supplier<InputStream> streamFactory;
+public class ImageResource extends AbstractResource implements ImageResourceInitializer
+{
+    private Supplier<InputStream> streamFactory = InputStream::nullInputStream;
 
     @Override
     public void validate() throws ResourceValidationException {
@@ -30,8 +27,8 @@ public class ImageResource extends AbstractResource implements ImageResourceInit
     }
 
     @Override
-    public boolean belongsTo(PackType type) {
-        return type.equals(PackType.CLIENT_RESOURCES);
+    public boolean belongsTo(@NotNull ResourceType type) {
+        return type.equals(ResourceType.CLIENT_RESOURCES);
     }
 
     @Override

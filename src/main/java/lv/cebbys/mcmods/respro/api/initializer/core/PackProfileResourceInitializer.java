@@ -1,11 +1,12 @@
 package lv.cebbys.mcmods.respro.api.initializer.core;
 
-import net.minecraft.server.packs.repository.Pack.Position;
+import net.minecraft.resource.ResourcePackProfile;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public interface PackProfileResourceInitializer {
+public interface PackProfileResourceInitializer
+{
     @NotNull PackProfileResourceInitializer setPackIcon(@NotNull Consumer<ImageResourceInitializer> consumer);
 
     @NotNull PackProfileResourceInitializer setPackName(@NotNull Consumer<StringResourceInitializer> consumer);
@@ -14,7 +15,7 @@ public interface PackProfileResourceInitializer {
 
     @NotNull PackProfileResourceInitializer setPackMeta(@NotNull Consumer<MetaResourceInitializer> consumer);
 
-    @NotNull PackProfileResourceInitializer setPackInsertionPosition(@NotNull Position insertionPosition);
+    @NotNull PackProfileResourceInitializer setPackInsertionPosition(@NotNull ResourcePackProfile.InsertionPosition insertionPosition);
 
     @NotNull PackProfileResourceInitializer setAlwaysEnabled(boolean packAlwaysEnabled);
 

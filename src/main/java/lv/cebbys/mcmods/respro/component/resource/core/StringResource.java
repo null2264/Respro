@@ -1,15 +1,14 @@
 package lv.cebbys.mcmods.respro.component.resource.core;
 
-import lombok.Getter;
 import lv.cebbys.mcmods.respro.api.initializer.core.StringResourceInitializer;
 import lv.cebbys.mcmods.respro.component.resource.AbstractStringResource;
 import lv.cebbys.mcmods.respro.exception.ResourceValidationException;
-import net.minecraft.ResourceLocationException;
-import net.minecraft.server.packs.PackType;
+import net.minecraft.resource.ResourceType;
+import net.minecraft.util.InvalidIdentifierException;
 import org.jetbrains.annotations.NotNull;
 
-@Getter
-public final class StringResource extends AbstractStringResource implements StringResourceInitializer {
+public final class StringResource extends AbstractStringResource implements StringResourceInitializer
+{
     private String content;
 
     public StringResource(@NotNull String textContent) {
@@ -43,12 +42,12 @@ public final class StringResource extends AbstractStringResource implements Stri
         try {
             getAsString();
         } catch (Exception e) {
-            throw new ResourceLocationException("TextResource content failed validation", e);
+            throw new InvalidIdentifierException("TextResource content failed validation", e);
         }
     }
 
     @Override
-    public boolean belongsTo(@NotNull PackType type) {
+    public boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 }
