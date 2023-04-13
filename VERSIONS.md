@@ -8,7 +8,7 @@
 > * Added support for 1.19.3
 > 
 > *Removals:*
-> * Removed Resource Pack (Temporarily)
+> * Removed `assets` (Temporarily)
 
 ---
 
