@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Arrays;
 
+import static lv.cebbys.mcmods.respro.component.core.PackProviders.RESPRO_ASSETS_PROVIDER;
 import static lv.cebbys.mcmods.respro.component.core.PackProviders.RESPRO_DATA_PROVIDER;
 
 @Mixin(ResourcePackManager.class)
@@ -31,17 +32,24 @@ class ResourcePackManagerMixin
             LOGGER.info("Appending data pack profile providers for server");
             return appendDataProfileSupplier(elements);
         }
-        if (!isForClient(elements)) {
+        if (isForClient(elements)) {
+            LOGGER.info("Appending assets pack profile providers for client");
+            return appendAssetsProfileSupplier(elements);
+        } else {
             LOGGER.info("Appending data pack profile providers for client");
             return appendDataProfileSupplier(elements);
         }
-        return ImmutableSet.copyOf(elements);
     }
 
     @Environment(EnvType.CLIENT)
     private
     <E> boolean isForClient(E[] elements) {
         return Arrays.stream(elements).anyMatch(element -> element instanceof DefaultClientResourcePackProvider);
+    }
+
+    private
+    <E> ImmutableSet<Object> appendAssetsProfileSupplier(E[] elements) {
+        return ImmutableSet.copyOf(ArrayUtils.add(elements, RESPRO_ASSETS_PROVIDER));
     }
 
     private
