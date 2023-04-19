@@ -7,9 +7,7 @@ jobs:
       matrix:
         # Use these Java versions
         java: [ 17 ]  # Current Java LTS & minimum supported by Minecraft
-        # and run on both Linux and Windows
-        os: ubuntu-latest
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: gradle/wrapper-validation-action@v1
