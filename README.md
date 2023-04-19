@@ -1,27 +1,28 @@
-# Resource Provider Mod (FABRIC)
+<h1 align="center">Resource Provider</h1>
 
----
-
-## Information
-Resource Provider Mod - Respro. Is a dynamic resource
-generation library for minecraft highly inspired by
-[Artifice](https://github.com/natanfudge/artifice) by
-[natanfudge](https://github.com/natanfudge) and
-[ARRP](https://github.com/Devan-Kerman/ARRP) by
-[Devan-Kerman](https://github.com/Devan-Kerman)
+<p align="center">
+Resource Provider (Respro) is a **fabric** dynamic resource generation library for
+minecraft highly inspired by 
+<a href="https://github.com/natanfudge/artifice">Artifice</a>
+by <a href="https://github.com/natanfudge">@natanfudge</a> and
+<a href="https://github.com/Devan-Kerman/ARRP">ARRP</a>
+by <a href="https://github.com/Devan-Kerman">@Devan-Kerman</a>
+</p>
 
 ## API
-Mod is published on custom maven repository. You can fetch it and
+Mod is published on maven repository. You can fetch it and
 include it in your mod in following way:
+
 ```groovy
 repositories {
+    // For versions BEFORE 0.3.0
     maven {
         url = "https://prod-cebbys-repomanager.herokuapp.com"
     }
+    // For versions AFTER 0.3.0
+    --TODO--
 }
-```
-Only versions above 0.1.1 are available
-```groovy
+
 dependencies {
     // Example include with version template
     include "lv.cebbys.mcmods:respro:${version}"
@@ -32,6 +33,3 @@ dependencies {
 ```
 
 ## Guide
-In progress
-
----
