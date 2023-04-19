@@ -1,6 +1,12 @@
 package lv.cebbys.mcmods.respro.api;
 
 import lv.cebbys.mcmods.respro.api.builder.ResourceBuilder;
+import lv.cebbys.mcmods.respro.api.initializer.blockstate.BlockVariantResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.blockstate.multipart.MultipartBlockPropertyResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.blockstate.multipart.MultipartBlockstateResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.blockstate.multipart.MultipartWhenResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.blockstate.variant.VariantBlockPropertyResourceInitializer;
+import lv.cebbys.mcmods.respro.api.initializer.blockstate.variant.VariantBlockstateResourceInitializer;
 import lv.cebbys.mcmods.respro.api.initializer.worldgen.WorldPresetsResourceInitializer;
 import lv.cebbys.mcmods.respro.api.initializer.worldgen.worldpreset.BiomeSourceResourceInitializer;
 import lv.cebbys.mcmods.respro.api.initializer.worldgen.worldpreset.ChunkGeneratorResourceInitializer;
@@ -8,6 +14,12 @@ import lv.cebbys.mcmods.respro.api.initializer.worldgen.worldpreset.DimensionRes
 import lv.cebbys.mcmods.respro.api.initializer.worldgen.worldpreset.WorldPresetResourceInitializer;
 import lv.cebbys.mcmods.respro.component.core.builder.SimpleResourceBuilder;
 import lv.cebbys.mcmods.respro.component.resource.AbstractResource;
+import lv.cebbys.mcmods.respro.component.resource.blockstate.BlockVariantResource;
+import lv.cebbys.mcmods.respro.component.resource.blockstate.multipart.MultipartBlockPropertyResource;
+import lv.cebbys.mcmods.respro.component.resource.blockstate.multipart.MultipartBlockstateResource;
+import lv.cebbys.mcmods.respro.component.resource.blockstate.multipart.MultipartWhenResource;
+import lv.cebbys.mcmods.respro.component.resource.blockstate.variant.VariantBlockPropertyResource;
+import lv.cebbys.mcmods.respro.component.resource.blockstate.variant.VariantBlockstateResource;
 import lv.cebbys.mcmods.respro.component.resource.string.worldgen.WorldPresetsResource;
 import lv.cebbys.mcmods.respro.component.resource.string.worldgen.worldpreset.BiomeSourceResource;
 import lv.cebbys.mcmods.respro.component.resource.string.worldgen.worldpreset.ChunkGeneratorResource;
@@ -31,6 +43,14 @@ class ResproBuilders
     private static final BuilderMap BUILDERS = new BuilderMap();
 
     static {
+        // Assets builder
+        registerResproSupplier(VariantBlockstateResourceInitializer.class, VariantBlockstateResource::new);
+        registerResproSupplier(VariantBlockPropertyResourceInitializer.class, VariantBlockPropertyResource::new);
+        registerResproSupplier(BlockVariantResourceInitializer.class, BlockVariantResource::new);
+        registerResproSupplier(MultipartBlockstateResourceInitializer.class, MultipartBlockstateResource::new);
+        registerResproSupplier(MultipartWhenResourceInitializer.class, MultipartWhenResource::new);
+        registerResproSupplier(MultipartBlockPropertyResourceInitializer.class, MultipartBlockPropertyResource::new);
+
         // Data builders
         registerResproSupplier(BiomeSourceResourceInitializer.class, BiomeSourceResource::new);
         registerResproSupplier(ChunkGeneratorResourceInitializer.class, ChunkGeneratorResource::new);

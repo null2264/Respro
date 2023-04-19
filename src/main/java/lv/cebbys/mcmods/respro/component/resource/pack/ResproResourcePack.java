@@ -7,6 +7,7 @@ import lv.cebbys.mcmods.respro.api.builder.ResourceBuilder;
 import lv.cebbys.mcmods.respro.api.initializer.core.PackProfileResourceInitializer;
 import lv.cebbys.mcmods.respro.api.initializer.pack.PackResourcesInitializer;
 import lv.cebbys.mcmods.respro.api.supplier.DataProvider;
+import lv.cebbys.mcmods.respro.api.supplier.PackProvider;
 import lv.cebbys.mcmods.respro.component.core.ResproPackDump;
 import lv.cebbys.mcmods.respro.component.resource.AbstractResource;
 import lv.cebbys.mcmods.respro.component.resource.core.MetaResource;
@@ -36,7 +37,7 @@ import static lv.cebbys.mcmods.respro.constant.ResproConstants.PACK_ICON_PATH;
 import static lv.cebbys.mcmods.respro.constant.ResproConstants.PACK_MCMETA_PATH;
 
 public abstract
-class ResproResourcePack<B extends PackResourcesInitializer<?>, S extends DataProvider> implements ResourcePack
+class ResproResourcePack<B extends PackResourcesInitializer<?>, S extends PackProvider<?>> implements ResourcePack
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(Respro.class);
     private static final ResproPackDump DUMP = new ResproPackDump();
