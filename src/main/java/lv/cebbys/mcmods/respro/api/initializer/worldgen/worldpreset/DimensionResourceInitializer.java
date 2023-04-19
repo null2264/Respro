@@ -6,9 +6,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public interface DimensionResourceInitializer
+public
+interface DimensionResourceInitializer
 {
-    @NotNull DimensionResourceInitializer setChunkGenerator(Consumer<ChunkGeneratorResourceInitializer> chunkGeneratorConsumer);
+    @NotNull
+    DimensionResourceInitializer setChunkGenerator(Consumer<ChunkGeneratorResourceInitializer> chunkGeneratorConsumer);
 
-    @NotNull DimensionResourceInitializer setFromRegistry(RegistryKey<DimensionType> dimensionType);
+    @NotNull
+    DimensionResourceInitializer setFromRegistry(RegistryKey<DimensionType> dimensionType);
 }

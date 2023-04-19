@@ -4,30 +4,36 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-public abstract class ResourceWrapper<K, T>
+public abstract
+class ResourceWrapper<K, T>
 {
     protected Map<K, T> data = new LinkedHashMap<>();
 
-    protected abstract Class<?> wrappedClass();
+    protected abstract
+    Class<?> wrappedClass();
 
-    protected T resource(K name) {
+    protected
+    T resource(K name) {
         return resource(Collections.singleton(name));
     }
 
-    protected T resource(K... names) {
+    protected
+    T resource(K... names) {
         return resource(Arrays.asList(names));
     }
 
-    protected T resource(List<K> names) {
+    protected
+    T resource(List<K> names) {
         return resource(new LinkedHashSet<>(names));
     }
 
-    protected T resource(Set<K> names) {
+    protected
+    T resource(Set<K> names) {
         T resource = createResource();
         if (names.stream().anyMatch(Objects::isNull)) {
-//            ResproLogger.fail("Specified keys contains null " + names);
+            //            ResproLogger.fail("Specified keys contains null " + names);
         } else if (names.stream().anyMatch(key -> data.containsKey(key))) {
-//            ResproLogger.fail("Resources are already present with specified keys " + names);
+            //            ResproLogger.fail("Resources are already present with specified keys " + names);
         } else {
             names.forEach(name -> {
                 data.put(name, resource);
@@ -36,13 +42,15 @@ public abstract class ResourceWrapper<K, T>
         return resource;
     }
 
-    protected T resources(K name, T resource) {
+    protected
+    T resources(K name, T resource) {
         data.put(name, resource);
         return resource;
     }
 
     @SuppressWarnings("unchecked")
-    protected T createResource() {
+    protected
+    T createResource() {
         Class<?> wrapped = wrappedClass();
         Throwable error;
         try {
@@ -51,10 +59,10 @@ public abstract class ResourceWrapper<K, T>
             return (T) constructor.newInstance();
         } catch (InvocationTargetException | IllegalAccessException | InstantiationException e) {
             error = e;
-//            ResproLogger.error(e, "Failed to instantiate resource " + wrapped.getName());
+            //            ResproLogger.error(e, "Failed to instantiate resource " + wrapped.getName());
         } catch (NoSuchMethodException e) {
             error = e;
-//            ResproLogger.error(e, "No argument constructor is present in class " + wrapped.getName());
+            //            ResproLogger.error(e, "No argument constructor is present in class " + wrapped.getName());
         }
         throw new RuntimeException(error);
     }

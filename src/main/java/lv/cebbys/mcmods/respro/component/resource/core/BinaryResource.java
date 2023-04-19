@@ -8,22 +8,26 @@ import org.jetbrains.annotations.NotNull;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-public class BinaryResource extends AbstractResource
+public
+class BinaryResource extends AbstractResource
 {
     private byte[] content;
     private boolean nullable;
 
-    public @NotNull InputStream getAsStream() {
+    public @NotNull
+    InputStream getAsStream() {
         if (content == null) return InputStream.nullInputStream();
         return new ByteArrayInputStream(content);
     }
 
-    public boolean belongsTo(@NotNull ResourceType type) {
+    public
+    boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 
     @Override
-    public void validate() throws ResourceValidationException {
+    public
+    void validate() throws ResourceValidationException {
         if (!nullable) {
             if (content == null) throw new ResourceValidationException("BinaryResource content is null");
         }

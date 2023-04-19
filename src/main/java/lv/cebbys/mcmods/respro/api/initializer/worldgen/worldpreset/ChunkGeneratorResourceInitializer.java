@@ -10,13 +10,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public interface ChunkGeneratorResourceInitializer
+public
+interface ChunkGeneratorResourceInitializer
 {
-    @NotNull ChunkGeneratorResourceInitializer setBiomeSource(Consumer<BiomeSourceResourceInitializer> biomeSourceConsumer);
+    @NotNull
+    ChunkGeneratorResourceInitializer setBiomeSource(Consumer<BiomeSourceResourceInitializer> biomeSourceConsumer);
 
-    @NotNull ChunkGeneratorResourceInitializer setStructureChunkValues(BlockPos playerSpawnOffset, BlockPos structureOffset, String structure, Identifier fillmentBlock, boolean enableTopBedrock, boolean enableBottomBedrock, boolean isBedrockFlat);
+    @NotNull
+    ChunkGeneratorResourceInitializer setStructureChunkValues(
+            BlockPos playerSpawnOffset, BlockPos structureOffset, String structure, Identifier fillmentBlock,
+            boolean enableTopBedrock, boolean enableBottomBedrock, boolean isBedrockFlat
+    );
 
-    @NotNull ChunkGeneratorResourceInitializer setFromCodec(Codec<? extends ChunkGenerator> chunkGeneratorCodec);
+    @NotNull
+    ChunkGeneratorResourceInitializer setFromCodec(Codec<? extends ChunkGenerator> chunkGeneratorCodec);
 
-    @NotNull ChunkGeneratorResourceInitializer setFromCodec(Codec<? extends ChunkGenerator> chunkGeneratorCodec, RegistryKey<ChunkGeneratorSettings> settings);
+    @NotNull
+    ChunkGeneratorResourceInitializer setFromCodec(
+            Codec<? extends ChunkGenerator> chunkGeneratorCodec, RegistryKey<ChunkGeneratorSettings> settings
+    );
 }

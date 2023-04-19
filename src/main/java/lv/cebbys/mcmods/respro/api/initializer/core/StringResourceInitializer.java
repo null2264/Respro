@@ -2,9 +2,12 @@ package lv.cebbys.mcmods.respro.api.initializer.core;
 
 import org.jetbrains.annotations.NotNull;
 
-public interface StringResourceInitializer
+public
+interface StringResourceInitializer
 {
-    @NotNull StringResourceInitializer setTranslatableText(@NotNull String translationKey);
+    @NotNull
+    StringResourceInitializer setTranslatableText(@NotNull String translationKey);
 
-    @NotNull StringResourceInitializer setText(@NotNull String text);
+    @NotNull
+    StringResourceInitializer setText(@NotNull String text);
 }

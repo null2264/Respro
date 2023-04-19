@@ -3,7 +3,9 @@ package lv.cebbys.mcmods.respro.utility.access;
 import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
 import org.jetbrains.annotations.NotNull;
 
-public interface MultiNoiseBiomeSourceAccess
+public
+interface MultiNoiseBiomeSourceAccess
 {
-    @NotNull MultiNoiseBiomeSource.Preset getPreset();
+    @NotNull
+    MultiNoiseBiomeSource.Preset getPreset();
 }

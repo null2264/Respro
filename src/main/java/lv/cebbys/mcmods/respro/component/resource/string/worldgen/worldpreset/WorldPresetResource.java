@@ -13,13 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class WorldPresetResource extends AbstractJsonObjectResource implements WorldPresetResourceInitializer
+public
+class WorldPresetResource extends AbstractJsonObjectResource implements WorldPresetResourceInitializer
 {
     @JsonPart("dimensions")
     protected Map<Identifier, DimensionResource> dimensions = new HashMap<>();
 
     @Override
-    public @NotNull WorldPresetResourceInitializer setDimensions(Consumer<DimensionResourceInitializer> dimensionConsumer) {
+    public @NotNull
+    WorldPresetResourceInitializer setDimensions(Consumer<DimensionResourceInitializer> dimensionConsumer) {
         DimensionResource dim = new DimensionResource();
         dimensionConsumer.accept(dim);
         dimensions.put(dim.getDimId(), dim);
@@ -27,12 +29,14 @@ public class WorldPresetResource extends AbstractJsonObjectResource implements W
     }
 
     @Override
-    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public
+    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public void validate() throws ResourceValidationException {
+    public
+    void validate() throws ResourceValidationException {
 
     }
 }

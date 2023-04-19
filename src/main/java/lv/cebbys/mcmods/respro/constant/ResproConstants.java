@@ -5,7 +5,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
-public class ResproConstants
+public
+class ResproConstants
 {
     public static final String RESPRO = "respro";
     public static final String PACK_MCMETA_PATH = "pack.mcmeta";

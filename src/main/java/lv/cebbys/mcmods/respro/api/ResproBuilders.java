@@ -24,7 +24,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class ResproBuilders
+public
+class ResproBuilders
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(ResproBuilders.class);
     private static final BuilderMap BUILDERS = new BuilderMap();
@@ -38,15 +39,20 @@ public class ResproBuilders
         registerResproSupplier(WorldPresetsResourceInitializer.class, WorldPresetsResource::new);
     }
 
-    public static <I, R extends AbstractResource> void registerBuilderSupplier(@NotNull Class<I> clazz, @NotNull RS<I, R> instance) {
+    public static
+    <I, R extends AbstractResource> void registerBuilderSupplier(@NotNull Class<I> clazz, @NotNull RS<I, R> instance) {
         registerBuilderSupplier(clazz, 0, instance);
     }
 
-    public static <I, R extends AbstractResource> void registerBuilderSupplier(@NotNull Class<I> clazz, int priority, @NotNull RS<I, R> instance) {
+    public static
+    <I, R extends AbstractResource> void registerBuilderSupplier(
+            @NotNull Class<I> clazz, int priority, @NotNull RS<I, R> instance
+    ) {
         BUILDERS.set(clazz, priority, instance);
     }
 
-    public static @Nullable <I, A extends ResourceBuilder<I, ?>> A supplyBuilder(@NotNull Class<I> clazz) {
+    public static @Nullable
+    <I, A extends ResourceBuilder<I, ?>> A supplyBuilder(@NotNull Class<I> clazz) {
         Supplier<A> builderSupplier = BUILDERS.get(clazz);
         if (builderSupplier == null) {
             LOGGER.error("Implementation of {} does not exist or is not registered", clazz.getName());
@@ -57,7 +63,8 @@ public class ResproBuilders
     }
 
     @SuppressWarnings("all")
-    public static @Nullable <I, B extends ResourceBuilder<I, ?>> B supplyTypedBuilder(@NotNull Class<I> clazz) {
+    public static @Nullable
+    <I, B extends ResourceBuilder<I, ?>> B supplyTypedBuilder(@NotNull Class<I> clazz) {
         ResourceBuilder<I, ?> builder = supplyBuilder(clazz);
         if (builder == null) return null;
         try {
@@ -68,18 +75,24 @@ public class ResproBuilders
         }
     }
 
-    private static <I, R extends AbstractResource> void registerResproSupplier(@NotNull Class<I> clazz, @NotNull Supplier<R> resourceSupplier) {
+    private static
+    <I, R extends AbstractResource> void registerResproSupplier(
+            @NotNull Class<I> clazz, @NotNull Supplier<R> resourceSupplier
+    ) {
         registerBuilderSupplier(clazz, () -> new SimpleResourceBuilder<>(resourceSupplier));
     }
 
-    private interface RS<I, R extends AbstractResource> extends Supplier<ResourceBuilder<I, R>>
+    private
+    interface RS<I, R extends AbstractResource> extends Supplier<ResourceBuilder<I, R>>
     {}
 
-    private static class BuilderMap
+    private static
+    class BuilderMap
     {
         private final Map<Class<?>, Pair<Integer, Supplier<?>>> map = new HashMap<>();
 
-        public <I, A extends ResourceBuilder<I, ?>> void set(@NotNull Class<I> key, int priority, @NotNull Supplier<A> value) {
+        public
+        <I, A extends ResourceBuilder<I, ?>> void set(@NotNull Class<I> key, int priority, @NotNull Supplier<A> value) {
             if (!map.containsKey(key)) map.put(key, new ImmutablePair<>(priority, value));
             else if (map.get(key).getKey() < priority) {
                 map.put(key, new ImmutablePair<>(priority, value));
@@ -87,7 +100,8 @@ public class ResproBuilders
         }
 
         @SuppressWarnings("all")
-        public <I, A extends ResourceBuilder<I, ?>> @Nullable Supplier<A> get(Class<I> key) {
+        public
+        <I, A extends ResourceBuilder<I, ?>> @Nullable Supplier<A> get(Class<I> key) {
             if (!map.containsKey(key)) return null;
             return (Supplier<A>) map.get(key).getValue();
         }

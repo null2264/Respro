@@ -18,7 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.InputStream;
 import java.util.function.Consumer;
 
-public class PackProfileResource extends AbstractResource implements PackProfileResourceInitializer
+public
+class PackProfileResource extends AbstractResource implements PackProfileResourceInitializer
 {
     private final ImageResource icon;
     private final StringResource name;
@@ -28,18 +29,23 @@ public class PackProfileResource extends AbstractResource implements PackProfile
     private boolean alwaysEnabled;
     private boolean pinned;
 
-    public PackProfileResource() {
+    public
+    PackProfileResource() {
         icon = new ImageResource();
         name = new StringResource();
         source = new StringResource(ResproConstants.PACK_SOURCE_STRING_RESPRO);
-        meta = new MetaResource("Respro Generated Pack", ResourceType.CLIENT_RESOURCES.getPackVersion(SharedConstants.getGameVersion()));
+        meta = new MetaResource(
+                "Respro Generated Pack",
+                ResourceType.CLIENT_RESOURCES.getPackVersion(SharedConstants.getGameVersion())
+        );
         position = ResourcePackProfile.InsertionPosition.TOP;
         alwaysEnabled = false;
         pinned = false;
     }
 
     @Override
-    public void validate() throws ResourceValidationException {
+    public
+    void validate() throws ResourceValidationException {
         if (icon == null) throw new ResourceValidationException("Pack icon resource is null");
         try {
             icon.validate();
@@ -68,82 +74,100 @@ public class PackProfileResource extends AbstractResource implements PackProfile
     }
 
     @Override
-    public @NotNull PackProfileResourceInitializer setPackIcon(@NotNull Consumer<ImageResourceInitializer> consumer) {
+    public @NotNull
+    PackProfileResourceInitializer setPackIcon(@NotNull Consumer<ImageResourceInitializer> consumer) {
         consumer.accept(icon);
         return this;
     }
 
     @Override
-    public @NotNull PackProfileResourceInitializer setPackName(@NotNull Consumer<StringResourceInitializer> consumer) {
+    public @NotNull
+    PackProfileResourceInitializer setPackName(@NotNull Consumer<StringResourceInitializer> consumer) {
         consumer.accept(name);
         return this;
     }
 
     @Override
-    public @NotNull PackProfileResourceInitializer setPackSource(@NotNull Consumer<StringResourceInitializer> consumer) {
+    public @NotNull
+    PackProfileResourceInitializer setPackSource(@NotNull Consumer<StringResourceInitializer> consumer) {
         consumer.accept(source);
         return this;
     }
 
     @Override
-    public @NotNull PackProfileResourceInitializer setPackMeta(@NotNull Consumer<MetaResourceInitializer> consumer) {
+    public @NotNull
+    PackProfileResourceInitializer setPackMeta(@NotNull Consumer<MetaResourceInitializer> consumer) {
         consumer.accept(meta);
         return this;
     }
 
     @Override
-    public @NotNull PackProfileResourceInitializer setPackInsertionPosition(@NotNull ResourcePackProfile.InsertionPosition insertionPosition) {
+    public @NotNull
+    PackProfileResourceInitializer setPackInsertionPosition(
+            @NotNull ResourcePackProfile.InsertionPosition insertionPosition
+    ) {
         position = insertionPosition;
         return this;
     }
 
     @Override
-    public @NotNull PackProfileResourceInitializer setAlwaysEnabled(boolean packAlwaysEnabled) {
+    public @NotNull
+    PackProfileResourceInitializer setAlwaysEnabled(boolean packAlwaysEnabled) {
         alwaysEnabled = packAlwaysEnabled;
         return this;
     }
 
     @Override
-    public @NotNull PackProfileResourceInitializer setPinned(boolean packPinned) {
+    public @NotNull
+    PackProfileResourceInitializer setPinned(boolean packPinned) {
         pinned = packPinned;
         return this;
     }
 
     @Override
-    public @NotNull InputStream getAsStream() {
+    public @NotNull
+    InputStream getAsStream() {
         return InputStream.nullInputStream();
     }
 
     @Override
-    public boolean belongsTo(@NotNull ResourceType type) {
+    public
+    boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 
-    public boolean isAlwaysEnabled() {
+    public
+    boolean isAlwaysEnabled() {
         return alwaysEnabled;
     }
 
-    public StringResource getName() {
+    public
+    StringResource getName() {
         return name;
     }
 
-    public MetaResource getMeta() {
+    public
+    MetaResource getMeta() {
         return meta;
     }
 
-    public ResourcePackProfile.InsertionPosition getPosition() {
+    public
+    ResourcePackProfile.InsertionPosition getPosition() {
         return position;
     }
 
-    public boolean isPinned() {
+    public
+    boolean isPinned() {
         return pinned;
     }
 
-    public StringResource getSource() {
+    public
+    StringResource getSource() {
         return source;
     }
 
-    public ImageResource getIcon() {
+    public
+    ImageResource getIcon() {
         return icon;
     }
 }

@@ -4,7 +4,8 @@ import lv.cebbys.mcmods.respro.component.mapper.JsonPart;
 import lv.cebbys.mcmods.respro.component.resource.AbstractRecipeResource;
 import lv.cebbys.mcmods.respro.exception.ResourceValidationException;
 
-public class ShapedCraftingRecipeResource extends AbstractRecipeResource
+public
+class ShapedCraftingRecipeResource extends AbstractRecipeResource
 {
 
     @JsonPart(value = "type")
@@ -14,7 +15,8 @@ public class ShapedCraftingRecipeResource extends AbstractRecipeResource
     @JsonPart(value = "pattern")
     protected String[] pattern;
 
-    public ShapedCraftingRecipeResource pattern(String row1, String row2, String row3) {
+    public
+    ShapedCraftingRecipeResource pattern(String row1, String row2, String row3) {
         if (pattern != null) {
             throw new RuntimeException("Recipe pattern has been already initialized");
         }
@@ -32,15 +34,18 @@ public class ShapedCraftingRecipeResource extends AbstractRecipeResource
         throw new RuntimeException("Invalid recipe pattern parameters");
     }
 
-    public ShapedCraftingRecipeResource pattern(String row1, String row2) {
+    public
+    ShapedCraftingRecipeResource pattern(String row1, String row2) {
         return this;
     }
 
-    public ShapedCraftingRecipeResource pattern(String row1) {
+    public
+    ShapedCraftingRecipeResource pattern(String row1) {
         return this;
     }
 
-    private boolean validatePatterns(String... patterns) {
+    private
+    boolean validatePatterns(String... patterns) {
         if (patterns.length == 0) return false;
         int nullCount = 0;
         int emptyLength = 0;
@@ -56,7 +61,8 @@ public class ShapedCraftingRecipeResource extends AbstractRecipeResource
     }
 
     @Override
-    public void validate() throws ResourceValidationException {
+    public
+    void validate() throws ResourceValidationException {
 
     }
 }

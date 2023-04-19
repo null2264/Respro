@@ -8,14 +8,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.function.Consumer;
 
-public interface PackListProvider<T extends ResourcePackProfile> extends ResourcePackProvider
+public
+interface PackListProvider<T extends ResourcePackProfile> extends ResourcePackProvider
 {
-    @NotNull Identifier getId();
+    @NotNull
+    Identifier getId();
 
-    @NotNull List<T> getPacks();
+    @NotNull
+    List<T> getPacks();
 
     @Override
-    default void register(Consumer<ResourcePackProfile> consumer) {
+    default
+    void register(Consumer<ResourcePackProfile> consumer) {
         getPacks().forEach(consumer);
     }
 }

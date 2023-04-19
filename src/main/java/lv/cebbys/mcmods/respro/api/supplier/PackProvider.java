@@ -7,14 +7,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public interface PackProvider<T extends ResourcePackProfile> extends ResourcePackProvider
+public
+interface PackProvider<T extends ResourcePackProfile> extends ResourcePackProvider
 {
-    @NotNull Identifier getId();
+    @NotNull
+    Identifier getId();
 
-    @NotNull T getPack();
+    @NotNull
+    T getPack();
 
     @Override
-    default void register(Consumer<ResourcePackProfile> profileAdder) {
+    default
+    void register(Consumer<ResourcePackProfile> profileAdder) {
         profileAdder.accept(getPack());
     }
 }

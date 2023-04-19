@@ -5,14 +5,18 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractJsonElementResource extends AbstractStringResource
+public abstract
+class AbstractJsonElementResource extends AbstractStringResource
 {
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().create();
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls()
+            .create();
 
-    public abstract @NotNull("AbstractJsonElementResource content is null") JsonElement getAsJsonElement();
+    public abstract @NotNull("AbstractJsonElementResource content is null")
+    JsonElement getAsJsonElement();
 
     @Override
-    public @NotNull("AbstractStringResource content is null") String getAsString() {
+    public @NotNull("AbstractStringResource content is null")
+    String getAsString() {
         return GSON.toJson(getAsJsonElement());
     }
 }

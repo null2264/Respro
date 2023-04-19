@@ -35,7 +35,8 @@ import java.util.function.Consumer;
 import static lv.cebbys.mcmods.respro.constant.ResproConstants.PACK_ICON_PATH;
 import static lv.cebbys.mcmods.respro.constant.ResproConstants.PACK_MCMETA_PATH;
 
-public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, S extends DataProvider> implements ResourcePack
+public abstract
+class ResproResourcePack<B extends PackResourcesInitializer<?>, S extends DataProvider> implements ResourcePack
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(Respro.class);
     private static final ResproPackDump DUMP = new ResproPackDump();
@@ -47,21 +48,26 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
     private PackProfileResource profile = new PackProfileResource();
     private boolean enabledDumpMode;
 
-    protected abstract B getInstance();
+    protected abstract
+    B getInstance();
 
-    public abstract S getProvider();
+    public abstract
+    S getProvider();
 
-    public @NotNull B setEnabledDumpMode(boolean isDumpMode) {
+    public @NotNull
+    B setEnabledDumpMode(boolean isDumpMode) {
         enabledDumpMode = isDumpMode;
         return getInstance();
     }
 
-    public @NotNull B setPackId(@NotNull Identifier packId) {
+    public @NotNull
+    B setPackId(@NotNull Identifier packId) {
         id = packId;
         return getInstance();
     }
 
-    public @NotNull B setPackProfile(@NotNull Consumer<PackProfileResourceInitializer> consumer) {
+    public @NotNull
+    B setPackProfile(@NotNull Consumer<PackProfileResourceInitializer> consumer) {
         profile = new PackProfileResource();
         consumer.accept(profile);
         setResource(new Identifier(id.getNamespace(), PACK_ICON_PATH), profile.getIcon());
@@ -69,7 +75,8 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
         return getInstance();
     }
 
-    public @NotNull B setResource(@NotNull Identifier id, @NotNull AbstractResource resource) {
+    public @NotNull
+    B setResource(@NotNull Identifier id, @NotNull AbstractResource resource) {
         if (resource.belongsTo(ResourceType.CLIENT_RESOURCES)) {
             assetNamespaces.add(id.getNamespace());
         }
@@ -80,7 +87,8 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
         return getInstance();
     }
 
-    public @NotNull <I> B setResource(Class<I> initializerClass, Identifier location, Consumer<I> consumer) {
+    public @NotNull
+    <I> B setResource(Class<I> initializerClass, Identifier location, Consumer<I> consumer) {
         ResourceBuilder<I, ?> builder = ResproBuilders.supplyBuilder(initializerClass);
         if (builder == null) {
             return getInstance();
@@ -90,12 +98,14 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
         return setResource(location, builder.build());
     }
 
-    public Map<Identifier, AbstractResource> getResources() {
+    public
+    Map<Identifier, AbstractResource> getResources() {
         return resources;
     }
 
     @Override
-    public InputSupplier<InputStream> openRoot(String... pathSegments) {
+    public
+    InputSupplier<InputStream> openRoot(String... pathSegments) {
         String path = String.join("/", pathSegments);
         if (PACK_MCMETA_PATH.equals(path)) {
             return () -> resources.get(new Identifier(id.getNamespace(), PACK_MCMETA_PATH)).getAsStream();
@@ -106,13 +116,15 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
     }
 
     @Override
-    public InputSupplier<InputStream> open(ResourceType type, Identifier id) {
+    public
+    InputSupplier<InputStream> open(ResourceType type, Identifier id) {
         if (hasResource(type, id)) return () -> resources.get(id).getAsStream();
         return null;
     }
 
     @Override
-    public void findResources(ResourceType type, String namespace, String prefix, ResultConsumer visitor) {
+    public
+    void findResources(ResourceType type, String namespace, String prefix, ResultConsumer visitor) {
         resources.forEach((key, value) -> {
             if (!(key.getPath().startsWith(prefix) && resources.get(key).belongsTo(type))) return;
             visitor.accept(key, value::getAsStream);
@@ -121,7 +133,8 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
 
     @Nullable
     @Override
-    public <T> T parseMetadata(@NotNull ResourceMetadataReader<T> reader) throws IOException {
+    public
+    <T> T parseMetadata(@NotNull ResourceMetadataReader<T> reader) throws IOException {
         Identifier metaId = new Identifier(id.getNamespace(), PACK_MCMETA_PATH);
         if (!resources.containsKey(metaId))
             throw new FileNotFoundException("Pack mcmeta was not found for pack: " + id);
@@ -133,12 +146,14 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
         }
     }
 
-    public boolean hasResource(@NotNull ResourceType type, @NotNull Identifier id) {
+    public
+    boolean hasResource(@NotNull ResourceType type, @NotNull Identifier id) {
         return resources.containsKey(id) && resources.get(id).belongsTo(type);
     }
 
     @Override
-    public Set<String> getNamespaces(@NotNull ResourceType type) {
+    public
+    Set<String> getNamespaces(@NotNull ResourceType type) {
         return switch (type) {
             case CLIENT_RESOURCES -> assetNamespaces;
             case SERVER_DATA -> dataNamespaces;
@@ -146,16 +161,19 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
     }
 
     @Override
-    public String getName() {
+    public
+    String getName() {
         return profile.getName().getAsString();
     }
 
     @Override
-    public void close() {
+    public
+    void close() {
 
     }
 
-    public void validate() {
+    public
+    void validate() {
         try {
             if (id == null) throw new PackGenerationException("Respro pack id is null");
             if (profile == null) throw new PackGenerationException("Respro pack profile is null");
@@ -166,17 +184,20 @@ public abstract class ResproResourcePack<B extends PackResourcesInitializer<?>, 
         }
     }
 
-    public void dump() {
+    public
+    void dump() {
         if (enabledDumpMode) {
             DUMP.dump(this);
         }
     }
 
-    public Identifier getId() {
+    public
+    Identifier getId() {
         return id;
     }
 
-    public PackProfileResource getProfile() {
+    public
+    PackProfileResource getProfile() {
         return profile;
     }
 }

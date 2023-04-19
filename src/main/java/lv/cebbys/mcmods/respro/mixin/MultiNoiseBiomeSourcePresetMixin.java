@@ -9,14 +9,16 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(MultiNoiseBiomeSource.Preset.class)
-public abstract class MultiNoiseBiomeSourcePresetMixin implements MultiNoiseBiomeSourcePresetAccess
+public abstract
+class MultiNoiseBiomeSourcePresetMixin implements MultiNoiseBiomeSourcePresetAccess
 {
     @Shadow
     @Final
     Identifier id;
 
     @Override
-    public @NotNull Identifier getPresetId() {
+    public @NotNull
+    Identifier getPresetId() {
         return id;
     }
 }

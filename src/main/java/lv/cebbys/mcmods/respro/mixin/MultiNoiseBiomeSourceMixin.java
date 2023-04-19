@@ -9,13 +9,16 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Optional;
 
 @Mixin(MultiNoiseBiomeSource.class)
-public abstract class MultiNoiseBiomeSourceMixin implements MultiNoiseBiomeSourceAccess
+public abstract
+class MultiNoiseBiomeSourceMixin implements MultiNoiseBiomeSourceAccess
 {
     @Shadow
-    protected abstract Optional<MultiNoiseBiomeSource.Instance> getInstance();
+    protected abstract
+    Optional<MultiNoiseBiomeSource.Instance> getInstance();
 
     @Override
-    public @NotNull MultiNoiseBiomeSource.Preset getPreset() {
+    public @NotNull
+    MultiNoiseBiomeSource.Preset getPreset() {
         return (getInstance().orElseThrow()).preset();
     }
 }

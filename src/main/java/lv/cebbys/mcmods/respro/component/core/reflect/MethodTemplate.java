@@ -2,19 +2,22 @@ package lv.cebbys.mcmods.respro.component.core.reflect;
 
 import java.lang.reflect.Method;
 
-public class MethodTemplate<P, R>
+public
+class MethodTemplate<P, R>
 {
     private final Class<R> returnType;
     private final String name;
     private final Class<?>[] parameters;
 
-    public MethodTemplate(Class<R> r, String n, Class<?>... p) {
+    public
+    MethodTemplate(Class<R> r, String n, Class<?>... p) {
         returnType = r;
         name = n;
         parameters = p;
     }
 
-    public R invoke(P parent, Object... args) {
+    public
+    R invoke(P parent, Object... args) {
         try {
             Method method = getMethod(parent);
             method.setAccessible(true);
@@ -24,7 +27,8 @@ public class MethodTemplate<P, R>
         }
     }
 
-    private Method getMethod(P parent) {
+    private
+    Method getMethod(P parent) {
         Class<?> clazz = parent.getClass();
         while (clazz != null) {
             try {

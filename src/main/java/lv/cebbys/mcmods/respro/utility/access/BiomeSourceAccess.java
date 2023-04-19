@@ -6,7 +6,8 @@ import net.minecraft.world.biome.source.BiomeSource;
 
 import java.util.Optional;
 
-public interface BiomeSourceAccess
+public
+interface BiomeSourceAccess
 {
     Optional<RegistryKey<Codec<? extends BiomeSource>>> getCodecKey();
 }

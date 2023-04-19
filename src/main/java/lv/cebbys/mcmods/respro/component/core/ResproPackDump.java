@@ -16,16 +16,19 @@ import java.util.concurrent.Executors;
 import static lv.cebbys.mcmods.respro.constant.ResproConstants.RESPRO_PACK_ICON_LOCATION;
 import static lv.cebbys.mcmods.respro.constant.ResproConstants.RESPRO_PACK_MCMETA_LOCATION;
 
-public class ResproPackDump
+public
+class ResproPackDump
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(ResproPackDump.class);
     private static final Executor EXECUTOR = Executors.newSingleThreadExecutor();
 
-    public void dump(ResproResourcePack<?, ?> resources) {
+    public
+    void dump(ResproResourcePack<?, ?> resources) {
         EXECUTOR.execute(() -> dumpResources(resources));
     }
 
-    private void dumpResources(ResproResourcePack<?, ?> resources) {
+    private
+    void dumpResources(ResproResourcePack<?, ?> resources) {
         try {
             File resproDump = makeDir(new File(FabricLoader.getInstance().getGameDir().toString() + "/respro"));
             File namespace = makeDir(new File(resproDump, resources.getId().getNamespace()));
@@ -44,7 +47,8 @@ public class ResproPackDump
         }
     }
 
-    private void dumpResource(File file, AbstractResource resource) {
+    private
+    void dumpResource(File file, AbstractResource resource) {
         try (FileOutputStream out = new FileOutputStream(file); InputStream in = resource.getAsStream()) {
             in.transferTo(out);
             out.flush();
@@ -54,27 +58,32 @@ public class ResproPackDump
     }
 
     @SuppressWarnings("all")
-    private @NotNull File makeDir(@NotNull File file) {
+    private @NotNull
+    File makeDir(@NotNull File file) {
         if (file.exists() && !file.isDirectory()) file.delete();
         if (!file.exists()) file.mkdirs();
         return file;
     }
 
-    private @NotNull File makeDir(@NotNull File parent, @NotNull String child) {
+    private @NotNull
+    File makeDir(@NotNull File parent, @NotNull String child) {
         return makeDir(new File(parent, child));
     }
 
-    private @NotNull File recreateDir(@NotNull File file) {
+    private @NotNull
+    File recreateDir(@NotNull File file) {
         if (file.exists()) file.delete();
         return makeDir(file);
     }
 
-    private @NotNull File makeFile(@NotNull File file) {
+    private @NotNull
+    File makeFile(@NotNull File file) {
         makeDir(file.getParentFile());
         return file;
     }
 
-    private @NotNull File makeFile(@NotNull File parent, @NotNull String child) {
+    private @NotNull
+    File makeFile(@NotNull File parent, @NotNull String child) {
         return makeFile(new File(parent, child));
     }
 }

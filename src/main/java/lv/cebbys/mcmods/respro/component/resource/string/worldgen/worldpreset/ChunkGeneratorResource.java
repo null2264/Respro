@@ -18,7 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ChunkGeneratorResource extends AbstractJsonObjectResource implements ChunkGeneratorResourceInitializer
+public
+class ChunkGeneratorResource extends AbstractJsonObjectResource implements ChunkGeneratorResourceInitializer
 {
     @JsonPart("type")
     protected Identifier type;
@@ -43,13 +44,16 @@ public class ChunkGeneratorResource extends AbstractJsonObjectResource implement
     @JsonPart("isBedrockFlat")
     protected Boolean isBedrockFlat = null;
 
-    public ChunkGeneratorResource() {}
+    public
+    ChunkGeneratorResource() {}
 
-    public ChunkGeneratorResource(String dimension) {
+    public
+    ChunkGeneratorResource(String dimension) {
         this.dimension = dimension;
     }
 
-    public @NotNull ChunkGeneratorResourceInitializer setBiomeSource(Consumer<BiomeSourceResourceInitializer> biomeSauceConsumer) {
+    public @NotNull
+    ChunkGeneratorResourceInitializer setBiomeSource(Consumer<BiomeSourceResourceInitializer> biomeSauceConsumer) {
         /*
         BiomeSource biomeSource = chunkGenerator.getBiomeSource();
         Identifier preset = null;
@@ -67,7 +71,11 @@ public class ChunkGeneratorResource extends AbstractJsonObjectResource implement
         return this;
     }
 
-    public @NotNull ChunkGeneratorResourceInitializer setStructureChunkValues(BlockPos playerSpawnOffset, BlockPos structureOffset, String structure, Identifier fillmentBlock, boolean enableTopBedrock, boolean enableBottomBedrock, boolean isBedrockFlat) {
+    public @NotNull
+    ChunkGeneratorResourceInitializer setStructureChunkValues(
+            BlockPos playerSpawnOffset, BlockPos structureOffset, String structure, Identifier fillmentBlock,
+            boolean enableTopBedrock, boolean enableBottomBedrock, boolean isBedrockFlat
+    ) {
         this.playerSpawnOffset = List.of(playerSpawnOffset.getX(), playerSpawnOffset.getY(), playerSpawnOffset.getZ());
         this.structureOffset = List.of(structureOffset.getX(), structureOffset.getY(), structureOffset.getZ());
         this.structure = structure;
@@ -78,23 +86,29 @@ public class ChunkGeneratorResource extends AbstractJsonObjectResource implement
         return this;
     }
 
-    public @NotNull ChunkGeneratorResourceInitializer setFromCodec(Codec<? extends ChunkGenerator> chunkGeneratorCodec) {
+    public @NotNull
+    ChunkGeneratorResourceInitializer setFromCodec(Codec<? extends ChunkGenerator> chunkGeneratorCodec) {
         this.type = Registries.CHUNK_GENERATOR.getKey(chunkGeneratorCodec).orElseThrow().getValue();
         return this;
     }
 
-    public @NotNull ChunkGeneratorResourceInitializer setFromCodec(Codec<? extends ChunkGenerator> chunkGeneratorCodec, RegistryKey<ChunkGeneratorSettings> settings) {
+    public @NotNull
+    ChunkGeneratorResourceInitializer setFromCodec(
+            Codec<? extends ChunkGenerator> chunkGeneratorCodec, RegistryKey<ChunkGeneratorSettings> settings
+    ) {
         this.settings = settings.getValue();
         return setFromCodec(chunkGeneratorCodec);
     }
 
     @Override
-    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public
+    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public void validate() throws ResourceValidationException {
+    public
+    void validate() throws ResourceValidationException {
 
     }
 }

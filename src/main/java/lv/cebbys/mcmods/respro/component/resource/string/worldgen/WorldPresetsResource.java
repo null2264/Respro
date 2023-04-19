@@ -10,25 +10,29 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class WorldPresetsResource extends AbstractJsonObjectResource implements WorldPresetsResourceInitializer
+public
+class WorldPresetsResource extends AbstractJsonObjectResource implements WorldPresetsResourceInitializer
 {
     @JsonPart("replace")
     protected Boolean dimensions = false;
     @JsonPart("values")
     protected ArrayList<Identifier> worldPreset = new ArrayList<>();
 
-    public @NotNull WorldPresetsResourceInitializer addWorldPreset(Identifier worldPresetId) {
+    public @NotNull
+    WorldPresetsResourceInitializer addWorldPreset(Identifier worldPresetId) {
         worldPreset.add(worldPresetId);
         return this;
     }
 
     @Override
-    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public
+    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public void validate() throws ResourceValidationException {
+    public
+    void validate() throws ResourceValidationException {
 
     }
 }

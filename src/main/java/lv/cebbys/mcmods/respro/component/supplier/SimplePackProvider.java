@@ -10,21 +10,27 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class SimplePackProvider<T extends ResourcePackProfile>
+public
+class SimplePackProvider<T extends ResourcePackProfile>
 {
     private final Supplier<ResproResourcePack<?, ?>> packResources;
     private final Function<ResproResourcePack<?, ?>, Data> packCreator;
 
-    public SimplePackProvider(Supplier<ResproResourcePack<?, ?>> packResources, Function<ResproResourcePack<?, ?>, Data> packCreator) {
+    public
+    SimplePackProvider(
+            Supplier<ResproResourcePack<?, ?>> packResources, Function<ResproResourcePack<?, ?>, Data> packCreator
+    ) {
         this.packResources = packResources;
         this.packCreator = packCreator;
     }
 
-    public @NotNull Identifier getId() {
+    public @NotNull
+    Identifier getId() {
         return IdentifierUtils.suffix(packResources.get().getId(), "_supplier");
     }
 
-    public @NotNull Data getPack() {
+    public @NotNull
+    Data getPack() {
         return packCreator.apply(packResources.get());
     }
 }

@@ -13,14 +13,16 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public class DimensionResource extends AbstractJsonObjectResource implements DimensionResourceInitializer
+public
+class DimensionResource extends AbstractJsonObjectResource implements DimensionResourceInitializer
 {
     @JsonPart("type")
     private Identifier type;
     @JsonPart("generator")
     private ChunkGeneratorResource chunkGenerator;
 
-    public @NotNull DimensionResourceInitializer setChunkGenerator(Consumer<ChunkGeneratorResourceInitializer> chunkGeneratorConsumer) {
+    public @NotNull
+    DimensionResourceInitializer setChunkGenerator(Consumer<ChunkGeneratorResourceInitializer> chunkGeneratorConsumer) {
         ChunkGeneratorResource chunkGenerator = new ChunkGeneratorResource(type.getPath());
         chunkGeneratorConsumer.accept(chunkGenerator);
         this.chunkGenerator = chunkGenerator;
@@ -28,22 +30,26 @@ public class DimensionResource extends AbstractJsonObjectResource implements Dim
     }
 
     @Override
-    public @NotNull DimensionResourceInitializer setFromRegistry(RegistryKey<DimensionType> dimensionType) {
+    public @NotNull
+    DimensionResourceInitializer setFromRegistry(RegistryKey<DimensionType> dimensionType) {
         this.type = dimensionType.getValue();
         return this;
     }
 
-    public Identifier getDimId() {
+    public
+    Identifier getDimId() {
         return type;
     }
 
     @Override
-    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public
+    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public void validate() throws ResourceValidationException {
+    public
+    void validate() throws ResourceValidationException {
 
     }
 }

@@ -10,15 +10,18 @@ import java.util.function.Consumer;
 
 import static lv.cebbys.mcmods.respro.Respro.LOGGER;
 
-public class ResproRegistry
+public
+class ResproRegistry
 {
 
-    public static void registerData(DataProvider provider) {
+    public static
+    void registerData(DataProvider provider) {
         LOGGER.info(provider.getId().toString());
         Registry.register(PackProviders.DATA_PROFILE_PROVIDER, provider.getId(), provider);
     }
 
-    public static void registerData(Consumer<DataResourcesInitializer> builderConsumer) {
+    public static
+    void registerData(Consumer<DataResourcesInitializer> builderConsumer) {
         ResproDataPack builder = new ResproDataPack();
         builderConsumer.accept(builder);
         builder.validate();

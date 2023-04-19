@@ -7,7 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("all")
-public class Respro implements ModInitializer
+public
+class Respro implements ModInitializer
 {
     public static final Logger LOGGER = LoggerFactory.getLogger(Respro.class);
     public static final String MODID = "respro";
@@ -15,7 +16,8 @@ public class Respro implements ModInitializer
     private static final ResproRegistry _REGISTRY = new ResproRegistry();
 
     @Override
-    public void onInitialize() {
+    public
+    void onInitialize() {
         LOGGER.info("Respro - Resource Provider Library has been initialized");
     }
 }

@@ -4,7 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public interface WorldPresetResourceInitializer
+public
+interface WorldPresetResourceInitializer
 {
-    @NotNull WorldPresetResourceInitializer setDimensions(Consumer<DimensionResourceInitializer> dimensionConsumer);
+    @NotNull
+    WorldPresetResourceInitializer setDimensions(Consumer<DimensionResourceInitializer> dimensionConsumer);
 }

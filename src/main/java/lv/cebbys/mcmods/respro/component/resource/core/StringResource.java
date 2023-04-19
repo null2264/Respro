@@ -7,38 +7,45 @@ import net.minecraft.resource.ResourceType;
 import net.minecraft.util.InvalidIdentifierException;
 import org.jetbrains.annotations.NotNull;
 
-public final class StringResource extends AbstractStringResource implements StringResourceInitializer
+public final
+class StringResource extends AbstractStringResource implements StringResourceInitializer
 {
     private String content;
 
-    public StringResource(@NotNull String textContent) {
+    public
+    StringResource(@NotNull String textContent) {
         content = textContent;
     }
 
-    public StringResource() {
+    public
+    StringResource() {
         content = null;
     }
 
     @Override
-    public @NotNull StringResourceInitializer setTranslatableText(@NotNull String translationKey) {
+    public @NotNull
+    StringResourceInitializer setTranslatableText(@NotNull String translationKey) {
         content = translationKey;
         return this;
     }
 
     @Override
-    public @NotNull StringResourceInitializer setText(@NotNull String text) {
+    public @NotNull
+    StringResourceInitializer setText(@NotNull String text) {
         content = text;
         return this;
     }
 
     @Override
-    public @NotNull("StringResource content is null") String getAsString() {
+    public @NotNull("StringResource content is null")
+    String getAsString() {
         return content;
     }
 
     @SuppressWarnings("all")
     @Override
-    public void validate() throws ResourceValidationException {
+    public
+    void validate() throws ResourceValidationException {
         try {
             getAsString();
         } catch (Exception e) {
@@ -47,7 +54,8 @@ public final class StringResource extends AbstractStringResource implements Stri
     }
 
     @Override
-    public boolean belongsTo(@NotNull ResourceType type) {
+    public
+    boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 }
