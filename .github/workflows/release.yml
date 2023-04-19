@@ -12,7 +12,6 @@ jobs:
   build:
     strategy:
       matrix:
-        # Use these Java versions
         java: [ 17 ]  # Current Java LTS & minimum supported by Minecraft
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +37,9 @@ jobs:
   deploy-github-packages:
     name: Deploy to Github Packages
     needs: build
+    strategy:
+      matrix:
+        java: [ 17 ]  # Current Java LTS & minimum supported by Minecraft
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

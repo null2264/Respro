@@ -5,7 +5,6 @@ jobs:
   build:
     strategy:
       matrix:
-        # Use these Java versions
         java: [ 17 ]  # Current Java LTS & minimum supported by Minecraft
     runs-on: ubuntu-latest
     steps:
