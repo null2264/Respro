@@ -2,6 +2,13 @@
 
 ---
 
+## Version 0.3.1 - Hotfix
+
+> *Fixes:*
+> * Fixed assets never appended
+
+---
+
 ## Version 0.3.0 - Forked
 
 > *Changes:*
