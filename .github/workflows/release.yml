@@ -1,0 +1,63 @@
+# Automatically build the project and run any configured tests for every push
+# and submitted pull request. This can help catch issues that only occur on
+# certain platforms or Java versions, and provides a first line of defence
+# against bad commits.
+
+name: "Release"
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        # Use these Java versions
+        java: [ 17 ]  # Current Java LTS & minimum supported by Minecraft
+        # and run on both Linux and Windows
+        os: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gradle/wrapper-validation-action@v1
+      - name: setup jdk ${{ matrix.java }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - run: chmod +x ./gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
+      - name: Archive build results
+        run: tar -I zstd -cf build.tar.zst .gradle build
+      - name: Upload build and gradle folders
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: build.tar.zst
+          if-no-files-found: error
+          retention-days: 3
+
+  deploy-github-packages:
+    name: Deploy to Github Packages
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gradle/wrapper-validation-action@v1
+      - name: setup jdk ${{ matrix.java }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - run: chmod +x ./gradlew
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+      - name: Unpack build artifact
+        run: tar axf build.tar.zst
+      - name: Validate artifacts exist
+        run: test -d ./build && test -d ./.gradle
+      - name: Publish to Github Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew publishMavenPublicationToGitHubPackagesRepository --no-daemon --max-workers 1
