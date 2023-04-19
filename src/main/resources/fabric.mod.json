@@ -5,7 +5,8 @@
   "name": "Resource Provider Library",
   "description": "Dynamic approach to asset and data packs!",
   "authors": [
-    "CebbyS"
+    "CebbyS",
+    "null2264"
   ],
   "contact": {
     "homepage": "https://github.com/CebbysMods",
@@ -26,6 +27,6 @@
   "depends": {
     "fabricloader": ">=0.14.0",
     "fabric": ">=0.40.0",
-    "minecraft": ">=1.16.0"
+    "minecraft": ">=1.19.3"
   }
 }
