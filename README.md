@@ -20,15 +20,22 @@ repositories {
         url = "https://prod-cebbys-repomanager.herokuapp.com"
     }
     // For versions AFTER 0.3.0
-    --TODO--
+    maven {
+        url = "https://maven.pkg.github.com/null2264/Respro"
+    }
 }
 
 dependencies {
     // Example include with version template
+    // BEFORE 0.3.0
     include "lv.cebbys.mcmods:respro:${version}"
+    // AFTER 0.3.0
+    include "lv.cebbys.mcmods:respro:${version}+${mc_version}"
     
     // Example include of version 0.1.1
     include "lv.cebbys.mcmods:respro:0.1.1"
+    // Example include of version 0.3.0
+    include "lv.cebbys.mcmods:respro:0.3.0+1.19.3"
 }
 ```
 
