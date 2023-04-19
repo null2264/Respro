@@ -5,10 +5,20 @@
 ## Version 0.3.0 - Forked
 
 > *Changes:*
-> * Added support for 1.19.3
-> 
+> * Migrated from MojMap to Yarn.
+>
+> *Additions:*
+> * Added support for 1.19.3.
+> * Added API for data generation to set:
+>  * World presets.
+>  * Dimensions.
+>  * Chunk generators.
+>  * Biome sources.
+>
 > *Removals:*
-> * Removed `assets` (Temporarily)
+> * Removed API for data generation to set:
+>  * Custre recipes.
+>  * KleeSlabs compatibility resources.
 
 ---
 
