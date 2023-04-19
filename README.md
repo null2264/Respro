@@ -1,7 +1,7 @@
 <h1 align="center">Resource Provider</h1>
 
 <p align="center">
-Resource Provider (Respro) is a **fabric** dynamic resource generation library for
+Resource Provider (Respro) is a <strong>fabric</strong> dynamic resource generation library for
 minecraft highly inspired by 
 <a href="https://github.com/natanfudge/artifice">Artifice</a>
 by <a href="https://github.com/natanfudge">@natanfudge</a> and
