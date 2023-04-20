@@ -16,11 +16,6 @@ class Respro implements ModInitializer
     private static final ResproBuilders _BUILDERS = new ResproBuilders();
     private static final ResproRegistry _REGISTRY = new ResproRegistry();
 
-    public static
-    Identifier identifier(String name) {
-        return new Identifier(Respro.MODID, name);
-    }
-
     @Override
     public
     void onInitialize() {

@@ -1,12 +1,14 @@
 package lv.cebbys.mcmods.respro.utility;
 
+import lv.cebbys.mcmods.respro.Respro;
 import net.minecraft.util.Identifier;
 
 public final
 class IdentifierUtils
 {
-    private
-    IdentifierUtils() {
+    public static
+    Identifier of(String id) {
+        return new Identifier(Respro.MODID, id);
     }
 
     public static
