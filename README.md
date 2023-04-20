@@ -1,15 +1,25 @@
-<h1 align="center">Resource Provider</h1>
+
+<h1 align="center">
+<img src="./res/icon/icon.png" width="128" height="128"/>
+<br/>
+Resource Provider
+</h1>
 
 <p align="center">
-Resource Provider (Respro) is a <strong>fabric</strong> dynamic resource generation library for
-minecraft highly inspired by 
+<strong>Resource Provider (Respro)</strong> is a <strong>fabric</strong> dynamic resource generation library for
+Minecraft.
+<br/>
+Highly inspired by 
 <a href="https://github.com/natanfudge/artifice">Artifice</a>
 by <a href="https://github.com/natanfudge">@natanfudge</a> and
 <a href="https://github.com/Devan-Kerman/ARRP">ARRP</a>
 by <a href="https://github.com/Devan-Kerman">@Devan-Kerman</a>
 </p>
 
-## API
+## Usage
+
+### Setup
+
 Mod is published on maven repository. You can fetch it and
 include it in your mod in following way:
 
@@ -42,8 +52,6 @@ dependencies {
 }
 ```
 
-## Guide
-
 ### Basic Example
 
 ```java
@@ -68,3 +76,9 @@ class ResproRegistrar
     }
 }
 ```
+
+For a real use-case example, you can check out the source code of my [SkyblockCreator](https://github.com/null2264/SkyblockCreator/tree/1.19.3) mod.
+
+## License
+
+This library is licensed under the [MIT License](./LICENSE)
