@@ -15,8 +15,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public final
-class MultipartBlockPropertyResource extends AbstractJsonObjectResource implements MultipartBlockPropertyResourceInitializer
-{
+class MultipartBlockPropertyResource extends AbstractJsonObjectResource implements MultipartBlockPropertyResourceInitializer {
     @JsonPart("properties")
     private final Map<String, String> properties = new HashMap<>();
 
@@ -31,8 +30,7 @@ class MultipartBlockPropertyResource extends AbstractJsonObjectResource implemen
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return false;
     }
 
@@ -45,8 +43,7 @@ class MultipartBlockPropertyResource extends AbstractJsonObjectResource implemen
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
         if (properties.size() == 0) {
             throw new ResourceValidationException(this.getClass().getSimpleName() + " does not have any properties");
         }

@@ -14,12 +14,10 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 public
-class ResproDataPack extends ResproResourcePack<ResproDataPack, DataProvider> implements DataResourcesInitializer
-{
+class ResproDataPack extends ResproResourcePack<ResproDataPack, DataProvider> implements DataResourcesInitializer {
 
     @Override
-    public
-    DataProvider getProvider() {
+    public DataProvider getProvider() {
         return new SimpleDataProvider(
                 this::getInstance,
                 (resources) -> new Data(resources.getId(), resources.getProfile(), ignored -> resources)
@@ -27,8 +25,7 @@ class ResproDataPack extends ResproResourcePack<ResproDataPack, DataProvider> im
     }
 
     @Override
-    protected
-    ResproDataPack getInstance() {
+    protected ResproDataPack getInstance() {
         return this;
     }
 

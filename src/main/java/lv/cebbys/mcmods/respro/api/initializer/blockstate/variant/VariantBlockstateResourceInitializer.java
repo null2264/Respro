@@ -6,8 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public
-interface VariantBlockstateResourceInitializer
-{
+interface VariantBlockstateResourceInitializer {
     @NotNull
     VariantBlockstateResourceInitializer setVariant(
             @NotNull Consumer<VariantBlockPropertyResourceInitializer> propertyConsumer,

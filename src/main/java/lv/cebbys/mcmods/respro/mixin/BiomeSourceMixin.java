@@ -12,15 +12,12 @@ import java.util.Optional;
 
 @Mixin(BiomeSource.class)
 public abstract
-class BiomeSourceMixin implements BiomeSourceAccess
-{
+class BiomeSourceMixin implements BiomeSourceAccess {
     @Shadow
-    protected abstract
-    Codec<? extends BiomeSource> getCodec();
+    protected abstract Codec<? extends BiomeSource> getCodec();
 
     // Literally copied and pasted from ChunkGenerator
-    public
-    Optional<RegistryKey<Codec<? extends BiomeSource>>> getCodecKey() {
+    public Optional<RegistryKey<Codec<? extends BiomeSource>>> getCodecKey() {
         return Registries.BIOME_SOURCE.getKey(getCodec());
     }
 }

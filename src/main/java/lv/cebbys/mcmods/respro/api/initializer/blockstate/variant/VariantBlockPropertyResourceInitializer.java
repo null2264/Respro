@@ -4,8 +4,7 @@ import net.minecraft.state.property.Property;
 import org.jetbrains.annotations.NotNull;
 
 public
-interface VariantBlockPropertyResourceInitializer
-{
+interface VariantBlockPropertyResourceInitializer {
     @NotNull
     VariantBlockPropertyResourceInitializer setNormal();
 
@@ -22,8 +21,7 @@ interface VariantBlockPropertyResourceInitializer
         return setProperty(id, String.valueOf(value));
     }
 
-    default @NotNull
-    <T extends Comparable<T>> VariantBlockPropertyResourceInitializer setProperty(
+    default @NotNull <T extends Comparable<T>> VariantBlockPropertyResourceInitializer setProperty(
             @NotNull Property<T> property,
             @NotNull T value
     ) {

@@ -19,8 +19,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public
-class ChunkGeneratorResource extends AbstractJsonObjectResource implements ChunkGeneratorResourceInitializer
-{
+class ChunkGeneratorResource extends AbstractJsonObjectResource implements ChunkGeneratorResourceInitializer {
     @JsonPart("type")
     protected Identifier type;
     @JsonPart("biome_source")
@@ -44,11 +43,10 @@ class ChunkGeneratorResource extends AbstractJsonObjectResource implements Chunk
     @JsonPart("isBedrockFlat")
     protected Boolean isBedrockFlat = null;
 
-    public
-    ChunkGeneratorResource() {}
+    public ChunkGeneratorResource() {
+    }
 
-    public
-    ChunkGeneratorResource(String dimension) {
+    public ChunkGeneratorResource(String dimension) {
         this.dimension = dimension;
     }
 
@@ -101,14 +99,12 @@ class ChunkGeneratorResource extends AbstractJsonObjectResource implements Chunk
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
 
     }
 }

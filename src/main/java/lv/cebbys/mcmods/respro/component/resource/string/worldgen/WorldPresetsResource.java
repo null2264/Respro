@@ -11,8 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public
-class WorldPresetsResource extends AbstractJsonObjectResource implements WorldPresetsResourceInitializer
-{
+class WorldPresetsResource extends AbstractJsonObjectResource implements WorldPresetsResourceInitializer {
     @JsonPart("replace")
     protected Boolean dimensions = false;
     @JsonPart("values")
@@ -25,14 +24,12 @@ class WorldPresetsResource extends AbstractJsonObjectResource implements WorldPr
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
 
     }
 }

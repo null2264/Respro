@@ -6,8 +6,7 @@ import com.google.gson.JsonElement;
 import org.jetbrains.annotations.NotNull;
 
 public abstract
-class AbstractJsonElementResource extends AbstractStringResource
-{
+class AbstractJsonElementResource extends AbstractStringResource {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls()
             .create();
 

@@ -19,8 +19,7 @@ import java.io.InputStream;
 import java.util.function.Consumer;
 
 public
-class PackProfileResource extends AbstractResource implements PackProfileResourceInitializer
-{
+class PackProfileResource extends AbstractResource implements PackProfileResourceInitializer {
     private final ImageResource icon;
     private final StringResource name;
     private final StringResource source;
@@ -29,8 +28,7 @@ class PackProfileResource extends AbstractResource implements PackProfileResourc
     private boolean alwaysEnabled;
     private boolean pinned;
 
-    public
-    PackProfileResource() {
+    public PackProfileResource() {
         icon = new ImageResource();
         name = new StringResource();
         source = new StringResource(ResproConstants.PACK_SOURCE_STRING_RESPRO);
@@ -44,8 +42,7 @@ class PackProfileResource extends AbstractResource implements PackProfileResourc
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
         if (icon == null) throw new ResourceValidationException("Pack icon resource is null");
         try {
             icon.validate();
@@ -131,43 +128,35 @@ class PackProfileResource extends AbstractResource implements PackProfileResourc
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull ResourceType type) {
+    public boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 
-    public
-    boolean isAlwaysEnabled() {
+    public boolean isAlwaysEnabled() {
         return alwaysEnabled;
     }
 
-    public
-    StringResource getName() {
+    public StringResource getName() {
         return name;
     }
 
-    public
-    MetaResource getMeta() {
+    public MetaResource getMeta() {
         return meta;
     }
 
-    public
-    ResourcePackProfile.InsertionPosition getPosition() {
+    public ResourcePackProfile.InsertionPosition getPosition() {
         return position;
     }
 
-    public
-    boolean isPinned() {
+    public boolean isPinned() {
         return pinned;
     }
 
-    public
-    StringResource getSource() {
+    public StringResource getSource() {
         return source;
     }
 
-    public
-    ImageResource getIcon() {
+    public ImageResource getIcon() {
         return icon;
     }
 }

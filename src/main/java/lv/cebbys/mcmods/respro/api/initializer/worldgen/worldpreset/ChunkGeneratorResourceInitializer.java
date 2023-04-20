@@ -11,8 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public
-interface ChunkGeneratorResourceInitializer
-{
+interface ChunkGeneratorResourceInitializer {
     @NotNull
     ChunkGeneratorResourceInitializer setBiomeSource(Consumer<BiomeSourceResourceInitializer> biomeSourceConsumer);
 

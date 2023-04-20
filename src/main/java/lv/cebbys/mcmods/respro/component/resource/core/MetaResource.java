@@ -8,27 +8,23 @@ import net.minecraft.resource.ResourceType;
 import org.jetbrains.annotations.NotNull;
 
 public final
-class MetaResource extends AbstractJsonObjectResource implements MetaResourceInitializer
-{
+class MetaResource extends AbstractJsonObjectResource implements MetaResourceInitializer {
     @JsonPart(value = "pack/description")
     private String description;
     @JsonPart(value = "pack/pack_format")
     private int format;
 
-    public
-    MetaResource(@NotNull String packDescription, int packFormat) {
+    public MetaResource(@NotNull String packDescription, int packFormat) {
         description = packDescription;
         format = packFormat;
     }
 
-    public
-    MetaResource() {
+    public MetaResource() {
         this("", 0);
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
         if (description == null) throw new ResourceValidationException("MetaResource description is null");
     }
 
@@ -47,18 +43,15 @@ class MetaResource extends AbstractJsonObjectResource implements MetaResourceIni
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull ResourceType type) {
+    public boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 
-    public
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public
-    int getFormat() {
+    public int getFormat() {
         return format;
     }
 }

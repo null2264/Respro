@@ -3,8 +3,7 @@ package lv.cebbys.mcmods.respro.api.initializer.core;
 import org.jetbrains.annotations.NotNull;
 
 public
-interface StringResourceInitializer
-{
+interface StringResourceInitializer {
     @NotNull
     StringResourceInitializer setTranslatableText(@NotNull String translationKey);
 

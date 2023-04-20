@@ -14,8 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public
-class DimensionResource extends AbstractJsonObjectResource implements DimensionResourceInitializer
-{
+class DimensionResource extends AbstractJsonObjectResource implements DimensionResourceInitializer {
     @JsonPart("type")
     private Identifier type;
     @JsonPart("generator")
@@ -36,20 +35,17 @@ class DimensionResource extends AbstractJsonObjectResource implements DimensionR
         return this;
     }
 
-    public
-    Identifier getDimId() {
+    public Identifier getDimId() {
         return type;
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
 
     }
 }

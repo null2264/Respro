@@ -4,8 +4,7 @@ import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
 import org.jetbrains.annotations.NotNull;
 
 public
-interface MultiNoiseBiomeSourceAccess
-{
+interface MultiNoiseBiomeSourceAccess {
     @NotNull
     MultiNoiseBiomeSource.Preset getPreset();
 }

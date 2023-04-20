@@ -12,13 +12,11 @@ import java.io.InputStream;
 import java.util.function.Supplier;
 
 public
-class ImageResource extends AbstractResource implements ImageResourceInitializer
-{
+class ImageResource extends AbstractResource implements ImageResourceInitializer {
     private Supplier<InputStream> streamFactory = InputStream::nullInputStream;
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
         if (streamFactory == null) throw new ResourceValidationException("ImageResource stream supplier is null");
         if (streamFactory.get() == null) throw new ResourceValidationException("ImageResource stream is null");
     }
@@ -30,8 +28,7 @@ class ImageResource extends AbstractResource implements ImageResourceInitializer
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull ResourceType type) {
+    public boolean belongsTo(@NotNull ResourceType type) {
         return type.equals(ResourceType.CLIENT_RESOURCES);
     }
 

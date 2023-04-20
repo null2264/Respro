@@ -25,8 +25,7 @@ import java.util.function.Consumer;
 @NoArgsConstructor
 @Getter
 public final
-class MultipartBlockstateResource extends AbstractJsonObjectResource implements MultipartBlockstateResourceInitializer
-{
+class MultipartBlockstateResource extends AbstractJsonObjectResource implements MultipartBlockstateResourceInitializer {
     private static final Logger LOGGER = LoggerFactory.getLogger(Respro.class);
     @JsonPart("multipart")
     private final List<JsonObject> multipart = new ArrayList<>();
@@ -77,14 +76,12 @@ class MultipartBlockstateResource extends AbstractJsonObjectResource implements 
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.CLIENT_RESOURCES.equals(type);
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
 
     }
 }

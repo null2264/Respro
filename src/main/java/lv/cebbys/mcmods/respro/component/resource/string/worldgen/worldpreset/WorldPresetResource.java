@@ -14,8 +14,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public
-class WorldPresetResource extends AbstractJsonObjectResource implements WorldPresetResourceInitializer
-{
+class WorldPresetResource extends AbstractJsonObjectResource implements WorldPresetResourceInitializer {
     @JsonPart("dimensions")
     protected Map<Identifier, DimensionResource> dimensions = new HashMap<>();
 
@@ -29,14 +28,12 @@ class WorldPresetResource extends AbstractJsonObjectResource implements WorldPre
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
 
     }
 }

@@ -21,13 +21,11 @@ import static lv.cebbys.mcmods.respro.component.core.PackProviders.RESPRO_DATA_P
 
 @Mixin(ResourcePackManager.class)
 public abstract
-class ResourcePackManagerMixin
-{
+class ResourcePackManagerMixin {
     private static final Logger LOGGER = LoggerFactory.getLogger(Respro.class);
 
     @Redirect(method = "<init>*", at = @At(value = "INVOKE", target = "Lcom/google/common/collect/ImmutableSet;copyOf([Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet;"))
-    private
-    <E> ImmutableSet<Object> appendResourcePackSuppliers(E[] elements) {
+    private <E> ImmutableSet<Object> appendResourcePackSuppliers(E[] elements) {
         if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER) {
             LOGGER.info("Appending data pack profile providers for server");
             return appendDataProfileSupplier(elements);
@@ -42,18 +40,15 @@ class ResourcePackManagerMixin
     }
 
     @Environment(EnvType.CLIENT)
-    private
-    <E> boolean isForClient(E[] elements) {
+    private <E> boolean isForClient(E[] elements) {
         return Arrays.stream(elements).anyMatch(element -> element instanceof DefaultClientResourcePackProvider);
     }
 
-    private
-    <E> ImmutableSet<Object> appendAssetsProfileSupplier(E[] elements) {
+    private <E> ImmutableSet<Object> appendAssetsProfileSupplier(E[] elements) {
         return ImmutableSet.copyOf(ArrayUtils.add(elements, RESPRO_ASSETS_PROVIDER));
     }
 
-    private
-    <E> ImmutableSet<Object> appendDataProfileSupplier(E[] elements) {
+    private <E> ImmutableSet<Object> appendDataProfileSupplier(E[] elements) {
         return ImmutableSet.copyOf(ArrayUtils.add(elements, RESPRO_DATA_PROVIDER));
     }
 }

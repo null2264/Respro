@@ -17,18 +17,15 @@ import static lv.cebbys.mcmods.respro.constant.ResproConstants.RESPRO_PACK_ICON_
 import static lv.cebbys.mcmods.respro.constant.ResproConstants.RESPRO_PACK_MCMETA_LOCATION;
 
 public
-class ResproPackDump
-{
+class ResproPackDump {
     private static final Logger LOGGER = LoggerFactory.getLogger(ResproPackDump.class);
     private static final Executor EXECUTOR = Executors.newSingleThreadExecutor();
 
-    public
-    void dump(ResproResourcePack<?, ?> resources) {
+    public void dump(ResproResourcePack<?, ?> resources) {
         EXECUTOR.execute(() -> dumpResources(resources));
     }
 
-    private
-    void dumpResources(ResproResourcePack<?, ?> resources) {
+    private void dumpResources(ResproResourcePack<?, ?> resources) {
         try {
             File resproDump = makeDir(new File(FabricLoader.getInstance().getGameDir().toString() + "/respro"));
             File namespace = makeDir(new File(resproDump, resources.getId().getNamespace()));
@@ -47,8 +44,7 @@ class ResproPackDump
         }
     }
 
-    private
-    void dumpResource(File file, AbstractResource resource) {
+    private void dumpResource(File file, AbstractResource resource) {
         try (FileOutputStream out = new FileOutputStream(file); InputStream in = resource.getAsStream()) {
             in.transferTo(out);
             out.flush();

@@ -6,10 +6,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public
-class ResourceUtils
-{
-    public static
-    <T extends BinaryResource> T createResource(Class<T> clazz) {
+class ResourceUtils {
+    public static <T extends BinaryResource> T createResource(Class<T> clazz) {
         Throwable error;
         try {
             Constructor<T> constructor = clazz.getConstructor();

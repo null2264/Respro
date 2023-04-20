@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public
-interface PackListProvider<T extends ResourcePackProfile> extends ResourcePackProvider
-{
+interface PackListProvider<T extends ResourcePackProfile> extends ResourcePackProvider {
     @NotNull
     Identifier getId();
 
@@ -18,8 +17,7 @@ interface PackListProvider<T extends ResourcePackProfile> extends ResourcePackPr
     List<T> getPacks();
 
     @Override
-    default
-    void register(Consumer<ResourcePackProfile> consumer) {
+    default void register(Consumer<ResourcePackProfile> consumer) {
         getPacks().forEach(consumer);
     }
 }

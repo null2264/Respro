@@ -7,14 +7,11 @@ import org.jetbrains.annotations.NotNull;
 import java.io.InputStream;
 
 public abstract
-class AbstractResource
-{
+class AbstractResource {
     public abstract @NotNull("AbstractResource stream is null")
     InputStream getAsStream();
 
-    public abstract
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type);
+    public abstract boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type);
 
-    public abstract
-    void validate() throws ResourceValidationException;
+    public abstract void validate() throws ResourceValidationException;
 }

@@ -13,12 +13,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public
-class Pack extends ResourcePackProfile
-{
+class Pack extends ResourcePackProfile {
     Identifier location;
 
-    public
-    Pack(
+    public Pack(
             @NotNull Identifier packLocation,
             @NotNull PackProfileResource packProfile,
             @NotNull ResourcePackProfile.PackFactory supplier,

@@ -4,8 +4,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public
-interface BlockVariantResourceInitializer
-{
+interface BlockVariantResourceInitializer {
     @NotNull
     BlockVariantResourceInitializer setModel(@NotNull String model);
 

@@ -12,8 +12,7 @@ import java.util.Set;
 
 @Getter
 public final
-class VariantBlockPropertyResource extends AbstractStringResource implements VariantBlockPropertyResourceInitializer
-{
+class VariantBlockPropertyResource extends AbstractStringResource implements VariantBlockPropertyResourceInitializer {
     private final Set<String> properties = new HashSet<>();
 
     @Override

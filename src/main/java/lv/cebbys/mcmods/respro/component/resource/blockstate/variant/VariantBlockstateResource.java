@@ -17,8 +17,7 @@ import java.util.function.Consumer;
 
 @Getter
 public final
-class VariantBlockstateResource extends AbstractJsonObjectResource implements VariantBlockstateResourceInitializer
-{
+class VariantBlockstateResource extends AbstractJsonObjectResource implements VariantBlockstateResourceInitializer {
     @JsonPart("variants")
     private final Map<String, BlockVariantResource> variants = new HashMap<>();
 

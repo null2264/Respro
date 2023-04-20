@@ -8,17 +8,14 @@ import net.minecraft.util.InvalidIdentifierException;
 import org.jetbrains.annotations.NotNull;
 
 public final
-class StringResource extends AbstractStringResource implements StringResourceInitializer
-{
+class StringResource extends AbstractStringResource implements StringResourceInitializer {
     private String content;
 
-    public
-    StringResource(@NotNull String textContent) {
+    public StringResource(@NotNull String textContent) {
         content = textContent;
     }
 
-    public
-    StringResource() {
+    public StringResource() {
         content = null;
     }
 
@@ -44,8 +41,7 @@ class StringResource extends AbstractStringResource implements StringResourceIni
 
     @SuppressWarnings("all")
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
         try {
             getAsString();
         } catch (Exception e) {
@@ -54,8 +50,7 @@ class StringResource extends AbstractStringResource implements StringResourceIni
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull ResourceType type) {
+    public boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 }

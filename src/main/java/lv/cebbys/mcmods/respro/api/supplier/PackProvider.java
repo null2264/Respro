@@ -9,8 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public
-interface PackProvider<T extends Pack> extends ResourcePackProvider
-{
+interface PackProvider<T extends Pack> extends ResourcePackProvider {
     @NotNull
     Identifier getId();
 
@@ -18,8 +17,7 @@ interface PackProvider<T extends Pack> extends ResourcePackProvider
     T getPack();
 
     @Override
-    default
-    void register(Consumer<ResourcePackProfile> profileAdder) {
+    default void register(Consumer<ResourcePackProfile> profileAdder) {
         profileAdder.accept(getPack());
     }
 }

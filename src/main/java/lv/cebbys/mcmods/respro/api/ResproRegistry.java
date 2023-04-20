@@ -19,16 +19,13 @@ import static lv.cebbys.mcmods.respro.Respro.LOGGER;
 
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 public
-class ResproRegistry
-{
-    public static
-    void registerData(DataProvider provider) {
+class ResproRegistry {
+    public static void registerData(DataProvider provider) {
         LOGGER.info(provider.getId().toString());
         Registry.register(PackProviders.DATA_PROFILE_PROVIDER, provider.getId(), provider);
     }
 
-    public static
-    void registerData(Consumer<DataResourcesInitializer> builderConsumer) {
+    public static void registerData(Consumer<DataResourcesInitializer> builderConsumer) {
         ResproDataPack builder = new ResproDataPack();
         builderConsumer.accept(builder);
         builder.validate();
@@ -37,14 +34,12 @@ class ResproRegistry
     }
 
     @Environment(EnvType.CLIENT)
-    public static
-    void registerAssets(AssetsProvider provider) {
+    public static void registerAssets(AssetsProvider provider) {
         Registry.register(PackProviders.ASSETS_PROFILE_PROVIDER, provider.getId(), provider);
     }
 
     @Environment(EnvType.CLIENT)
-    public static
-    void registerAssets(Consumer<AssetsResourcesInitializer> builderConsumer) {
+    public static void registerAssets(Consumer<AssetsResourcesInitializer> builderConsumer) {
         ResproAssetsPack builder = new ResproAssetsPack();
         builderConsumer.accept(builder);
         builder.validate();

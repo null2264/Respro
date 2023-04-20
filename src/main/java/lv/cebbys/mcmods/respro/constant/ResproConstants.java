@@ -3,8 +3,7 @@ package lv.cebbys.mcmods.respro.constant;
 import net.minecraft.util.Identifier;
 
 public
-class ResproConstants
-{
+class ResproConstants {
     public static final String RESPRO = "respro";
     public static final String PACK_MCMETA_PATH = "pack.mcmeta";
     public static final String PACK_ICON_PATH = "pack.png";

@@ -8,10 +8,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public
-class SimpleDataProvider extends SimplePackProvider<Data> implements DataProvider
-{
-    public
-    SimpleDataProvider(
+class SimpleDataProvider extends SimplePackProvider<Data> implements DataProvider {
+    public SimpleDataProvider(
             Supplier<ResproResourcePack<?, ?>> packResources, Function<ResproResourcePack<?, ?>, Data> packCreator
     ) {
         super(packResources, packCreator);

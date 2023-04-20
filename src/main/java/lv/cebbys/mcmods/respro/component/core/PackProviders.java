@@ -14,8 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public
-class PackProviders
-{
+class PackProviders {
     public static final Registry<DataProvider> DATA_PROFILE_PROVIDER;
     public static final PackListProvider<Data> RESPRO_DATA_PROVIDER;
 
@@ -28,8 +27,7 @@ class PackProviders
                 Lifecycle.stable(),
                 false
         );
-        RESPRO_DATA_PROVIDER = new DataListProvider()
-        {
+        RESPRO_DATA_PROVIDER = new DataListProvider() {
             private final Identifier id = IdentifierUtils.of("respro_data_provider");
 
             @Override

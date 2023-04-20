@@ -9,8 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 public
-class BinaryResource extends AbstractResource
-{
+class BinaryResource extends AbstractResource {
     private byte[] content;
     private boolean nullable;
 
@@ -20,14 +19,12 @@ class BinaryResource extends AbstractResource
         return new ByteArrayInputStream(content);
     }
 
-    public
-    boolean belongsTo(@NotNull ResourceType type) {
+    public boolean belongsTo(@NotNull ResourceType type) {
         return true;
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
         if (!nullable) {
             if (content == null) throw new ResourceValidationException("BinaryResource content is null");
         }

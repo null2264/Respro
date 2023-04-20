@@ -6,8 +6,7 @@ import lv.cebbys.mcmods.respro.component.mapper.ResourceParser;
 import org.jetbrains.annotations.NotNull;
 
 public abstract
-class AbstractJsonObjectResource extends AbstractJsonElementResource
-{
+class AbstractJsonObjectResource extends AbstractJsonElementResource {
     private static final ResourceParser PARSER = new ResourceParser();
 
     public @NotNull("AbstractJsonObjectResource content is null")

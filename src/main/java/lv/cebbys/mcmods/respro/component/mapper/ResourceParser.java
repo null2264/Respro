@@ -15,12 +15,10 @@ import java.util.List;
 import java.util.Map;
 
 public
-class ResourceParser
-{
+class ResourceParser {
     private static final Logger LOGGER = LoggerFactory.getLogger(Respro.class);
 
-    public
-    JsonObject parse(Object object) {
+    public JsonObject parse(Object object) {
         Class<?> clazz = object.getClass();
         JsonObject json = new JsonObject();
         Arrays.asList(clazz.getDeclaredFields()).forEach(field -> {
@@ -43,8 +41,7 @@ class ResourceParser
     }
 
     @SuppressWarnings("all")
-    private
-    void appendToJsonObject(String path, JsonObject json, Object data) {
+    private void appendToJsonObject(String path, JsonObject json, Object data) {
         if (data != null) {
             if (path.contains("/")) {
                 String name = path.substring(0, path.indexOf("/"));
@@ -90,8 +87,7 @@ class ResourceParser
     }
 
     @SuppressWarnings("all")
-    private
-    void appendToJsonArray(JsonArray array, Object data) {
+    private void appendToJsonArray(JsonArray array, Object data) {
         if (data != null) {
             List<Object> l = (List<Object>) data;
             l.forEach(element -> {

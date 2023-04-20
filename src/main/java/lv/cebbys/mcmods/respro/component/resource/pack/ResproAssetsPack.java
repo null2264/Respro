@@ -17,11 +17,9 @@ import static net.fabricmc.api.EnvType.CLIENT;
 
 @Environment(CLIENT)
 public
-class ResproAssetsPack extends ResproResourcePack<ResproAssetsPack, AssetsProvider> implements AssetsResourcesInitializer
-{
+class ResproAssetsPack extends ResproResourcePack<ResproAssetsPack, AssetsProvider> implements AssetsResourcesInitializer {
     @Override
-    public
-    AssetsProvider getProvider() {
+    public AssetsProvider getProvider() {
         return new SimpleAssetsProvider(
                 this::getInstance,
                 (resources) -> new Assets(resources.getId(), resources.getProfile(), ignored -> resources)
@@ -29,8 +27,7 @@ class ResproAssetsPack extends ResproResourcePack<ResproAssetsPack, AssetsProvid
     }
 
     @Override
-    protected
-    ResproAssetsPack getInstance() {
+    protected ResproAssetsPack getInstance() {
         return this;
     }
 

@@ -8,8 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public
-interface DataResourcesInitializer extends PackResourcesInitializer<DataResourcesInitializer>
-{
+interface DataResourcesInitializer extends PackResourcesInitializer<DataResourcesInitializer> {
     @NotNull("DataResourcesInitializer is null")
     DataResourcesInitializer setWorldPreset(
             @NotNull("Identifier provided was null") Identifier id,

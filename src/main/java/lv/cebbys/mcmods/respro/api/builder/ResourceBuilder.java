@@ -7,13 +7,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public
-interface ResourceBuilder<I, R extends AbstractResource>
-{
+interface ResourceBuilder<I, R extends AbstractResource> {
     @NotNull
     I getInitializer();
 
-    default
-    void initialize(@NotNull Consumer<I> consumer) {
+    default void initialize(@NotNull Consumer<I> consumer) {
         consumer.accept(getInitializer());
     }
 

@@ -7,8 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public
-interface DimensionResourceInitializer
-{
+interface DimensionResourceInitializer {
     @NotNull
     DimensionResourceInitializer setChunkGenerator(Consumer<ChunkGeneratorResourceInitializer> chunkGeneratorConsumer);
 

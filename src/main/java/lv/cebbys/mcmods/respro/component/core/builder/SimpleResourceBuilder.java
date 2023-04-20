@@ -9,13 +9,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public
-class SimpleResourceBuilder<I, R extends AbstractResource> implements ResourceBuilder<I, R>
-{
+class SimpleResourceBuilder<I, R extends AbstractResource> implements ResourceBuilder<I, R> {
     private final R resource;
 
     @SuppressWarnings("all")
-    public
-    SimpleResourceBuilder(R resourceBuilder) {
+    public SimpleResourceBuilder(R resourceBuilder) {
         try {
             I ignored = (I) resourceBuilder;
         } catch (Exception e) {
@@ -25,8 +23,7 @@ class SimpleResourceBuilder<I, R extends AbstractResource> implements ResourceBu
         resource = resourceBuilder;
     }
 
-    public
-    SimpleResourceBuilder(Supplier<R> supplier) {
+    public SimpleResourceBuilder(Supplier<R> supplier) {
         this(supplier.get());
     }
 
@@ -38,8 +35,7 @@ class SimpleResourceBuilder<I, R extends AbstractResource> implements ResourceBu
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
         resource.validate();
     }
 

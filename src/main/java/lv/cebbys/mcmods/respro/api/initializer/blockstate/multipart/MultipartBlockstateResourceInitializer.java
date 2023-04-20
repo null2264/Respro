@@ -6,8 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Consumer;
 
 public
-interface MultipartBlockstateResourceInitializer
-{
+interface MultipartBlockstateResourceInitializer {
     @NotNull
     MultipartBlockstateResourceInitializer setWhen(
             @NotNull Consumer<MultipartWhenResourceInitializer> whenConsumer,

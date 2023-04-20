@@ -8,8 +8,7 @@ import java.util.function.Consumer;
 
 @SuppressWarnings("all")
 public
-interface PackResourcesInitializer<T extends PackResourcesInitializer<?>>
-{
+interface PackResourcesInitializer<T extends PackResourcesInitializer<?>> {
     @NotNull
     T setPackId(@NotNull Identifier id);
 
@@ -19,6 +18,5 @@ interface PackResourcesInitializer<T extends PackResourcesInitializer<?>>
     @NotNull
     T setDumpMode(boolean enabledDump);
 
-    @NotNull
-    <I> T setResource(Class<I> builderClass, Identifier location, Consumer<I> consumer);
+    @NotNull <I> T setResource(Class<I> builderClass, Identifier location, Consumer<I> consumer);
 }

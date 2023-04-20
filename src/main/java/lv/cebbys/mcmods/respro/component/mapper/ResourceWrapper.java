@@ -5,30 +5,24 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public abstract
-class ResourceWrapper<K, T>
-{
+class ResourceWrapper<K, T> {
     protected Map<K, T> data = new LinkedHashMap<>();
 
-    protected abstract
-    Class<?> wrappedClass();
+    protected abstract Class<?> wrappedClass();
 
-    protected
-    T resource(K name) {
+    protected T resource(K name) {
         return resource(Collections.singleton(name));
     }
 
-    protected
-    T resource(K... names) {
+    protected T resource(K... names) {
         return resource(Arrays.asList(names));
     }
 
-    protected
-    T resource(List<K> names) {
+    protected T resource(List<K> names) {
         return resource(new LinkedHashSet<>(names));
     }
 
-    protected
-    T resource(Set<K> names) {
+    protected T resource(Set<K> names) {
         T resource = createResource();
         if (names.stream().anyMatch(Objects::isNull)) {
             //            ResproLogger.fail("Specified keys contains null " + names);
@@ -42,15 +36,13 @@ class ResourceWrapper<K, T>
         return resource;
     }
 
-    protected
-    T resources(K name, T resource) {
+    protected T resources(K name, T resource) {
         data.put(name, resource);
         return resource;
     }
 
     @SuppressWarnings("unchecked")
-    protected
-    T createResource() {
+    protected T createResource() {
         Class<?> wrapped = wrappedClass();
         Throwable error;
         try {

@@ -14,8 +14,7 @@ import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
 import org.jetbrains.annotations.NotNull;
 
 public
-class BiomeSourceResource extends AbstractJsonObjectResource implements BiomeSourceResourceInitializer
-{
+class BiomeSourceResource extends AbstractJsonObjectResource implements BiomeSourceResourceInitializer {
     @JsonPart("type")
     protected Identifier type;
     @JsonPart("preset")
@@ -52,14 +51,12 @@ class BiomeSourceResource extends AbstractJsonObjectResource implements BiomeSou
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return ResourceType.SERVER_DATA.equals(type);
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
 
     }
 }

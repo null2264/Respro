@@ -7,5 +7,5 @@ import static net.fabricmc.api.EnvType.CLIENT;
 
 @Environment(CLIENT)
 public
-interface AssetsListProvider extends PackListProvider<Assets>
-{}
+interface AssetsListProvider extends PackListProvider<Assets> {
+}

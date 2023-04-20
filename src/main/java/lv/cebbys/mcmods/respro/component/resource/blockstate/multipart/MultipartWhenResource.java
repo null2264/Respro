@@ -20,8 +20,7 @@ import java.util.function.Consumer;
 @NoArgsConstructor
 @Getter
 public final
-class MultipartWhenResource extends AbstractJsonObjectResource implements MultipartWhenResourceInitializer
-{
+class MultipartWhenResource extends AbstractJsonObjectResource implements MultipartWhenResourceInitializer {
     @JsonPart("when")
     private JsonObject when = new JsonObject();
 
@@ -52,14 +51,12 @@ class MultipartWhenResource extends AbstractJsonObjectResource implements Multip
     }
 
     @Override
-    public
-    boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
+    public boolean belongsTo(@NotNull("Provided ResourceType is null") ResourceType type) {
         return false;
     }
 
     @Override
-    public
-    void validate() throws ResourceValidationException {
+    public void validate() throws ResourceValidationException {
         if (when == null) {
             throw new ResourceValidationException("MultipartWhenResource 'when' property is null");
         }

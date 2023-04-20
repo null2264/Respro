@@ -7,8 +7,7 @@ import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
 import org.jetbrains.annotations.NotNull;
 
 public
-interface BiomeSourceResourceInitializer
-{
+interface BiomeSourceResourceInitializer {
     @NotNull
     BiomeSourceResourceInitializer setValues(Identifier type, Identifier preset);
 

@@ -4,24 +4,22 @@ import lv.cebbys.mcmods.respro.api.initializer.blockstate.BlockVariantResourceIn
 import lv.cebbys.mcmods.respro.component.mapper.JsonPart;
 import lv.cebbys.mcmods.respro.component.resource.AbstractJsonObjectResource;
 import lv.cebbys.mcmods.respro.exception.ResourceValidationException;
-import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public
-final class BlockVariantResource extends AbstractJsonObjectResource implements BlockVariantResourceInitializer
-{
+final class BlockVariantResource extends AbstractJsonObjectResource implements BlockVariantResourceInitializer {
     @JsonPart(value = "model")
-    protected String model;
+    private String model;
     @JsonPart(value = "x")
-    protected Integer x;
+    private Integer x;
     @JsonPart(value = "y")
-    protected Integer y;
+    private Integer y;
     @JsonPart(value = "uvlock")
-    protected Boolean uvlock;
+    private Boolean uvlock;
     @JsonPart(value = "weight")
-    protected Integer weight;
+    private Integer weight;
 
     @Override
     public void validate() throws ResourceValidationException {

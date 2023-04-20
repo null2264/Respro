@@ -10,11 +10,9 @@ import java.util.Optional;
 
 @Mixin(MultiNoiseBiomeSource.class)
 public abstract
-class MultiNoiseBiomeSourceMixin implements MultiNoiseBiomeSourceAccess
-{
+class MultiNoiseBiomeSourceMixin implements MultiNoiseBiomeSourceAccess {
     @Shadow
-    protected abstract
-    Optional<MultiNoiseBiomeSource.Instance> getInstance();
+    protected abstract Optional<MultiNoiseBiomeSource.Instance> getInstance();
 
     @Override
     public @NotNull

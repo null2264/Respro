@@ -10,13 +10,11 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public
-class SimplePackProvider<T extends Pack>
-{
+class SimplePackProvider<T extends Pack> {
     private final Supplier<ResproResourcePack<?, ?>> packResources;
     private final Function<ResproResourcePack<?, ?>, T> packCreator;
 
-    public
-    SimplePackProvider(
+    public SimplePackProvider(
             Supplier<ResproResourcePack<?, ?>> packResources, Function<ResproResourcePack<?, ?>, T> packCreator
     ) {
         this.packResources = packResources;
