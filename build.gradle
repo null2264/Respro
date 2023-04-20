@@ -12,6 +12,10 @@ archivesBaseName = project.mod_name
 
 repositories {
     mavenCentral()
+    maven {
+        name = "Maven Central Fallback"
+        url = "https://oss.sonatype.org/content/repositories/releases/"
+    }
 }
 
 dependencies {
