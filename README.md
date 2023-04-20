@@ -20,8 +20,9 @@ repositories {
         url = "https://prod-cebbys-repomanager.herokuapp.com"
     }
     // For versions AFTER 0.3.0
+    // - using Jitpack
     maven {
-        url = "https://maven.pkg.github.com/null2264/Respro"
+        url = "https://jitpack.io"
     }
 }
 
@@ -30,12 +31,14 @@ dependencies {
     // BEFORE 0.3.0
     include "lv.cebbys.mcmods:respro:${version}"
     // AFTER 0.3.0
-    include "lv.cebbys.mcmods:respro:${version}+${mc_version}"
+    // - using Jitpack
+    include "com.github.null2264:Respro:${version}"
     
     // Example include of version 0.1.1
     include "lv.cebbys.mcmods:respro:0.1.1"
-    // Example include of version 0.3.0
-    include "lv.cebbys.mcmods:respro:0.3.0+1.19.3"
+    // Example include of version 0.3.1
+    // - using Jitpack
+    include "com.github.null2264:Respro:0.3.1"
 }
 ```
 
