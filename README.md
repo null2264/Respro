@@ -22,7 +22,7 @@ by <a href="https://github.com/Devan-Kerman">@Devan-Kerman</a>
 
 > **Warning**
 >
-> This fork only maintain v0.3 or newer for 1.19.3, older version is currently not planned
+> This fork only maintain v0.3 or newer for 1.19.3, support for older version of Minecraft is currently not planned
 
 Mod is published on maven repository. You can fetch it and
 include it in your mod in following way:
