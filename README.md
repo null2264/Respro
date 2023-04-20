@@ -43,3 +43,28 @@ dependencies {
 ```
 
 ## Guide
+
+### Basic Example
+
+```java
+class ResproRegistrar
+{
+    // Call this somewhere, maybe your ModInitializer subclass (your mod's main entrypoint)
+    public static void register() {
+        ResproRegistry.registerData(data -> {
+            data.setDumpMode(FabricLoader.getInstance().isDevelopmentEnvironment());
+            data.setPackId(new Identifier("yourmod", "datapack"));
+            data.setPackProfile(profile -> {
+                profile.setAlwaysEnabled(true);
+                profile.setPackName(name -> name.setText("Your Mod Datapack's Name"));
+                profile.setPackIcon(icon -> icon.setFromResources(Mod.class, "assets/yourmod/icon.png"));
+                profile.setPackMeta(meta -> {
+                    meta.setDescription("Your Mod Datapack's Name");
+                    meta.setFormat(ResourceType.CLIENT_RESOURCES.getPackVersion(SharedConstants.getGameVersion()));
+                });
+            });
+            data.setWorldPreset(...);
+        });
+    }
+}
+```
