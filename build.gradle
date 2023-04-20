@@ -90,6 +90,34 @@ publishing {
             artifactId = project.mod_name
             version = project.mod_version
 
+            pom {
+                name = "Resource Provider"
+                description = "Dynamic approach to asset and data packs"
+                url = "https://github.com/null2264/Respro"
+
+                developers {
+                    developer {
+                        id = "null2264"
+                        name = "Ahmad Ansori Palembani"
+                        email = "palembani@gmail.com"
+                    }
+                }
+
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "https://opensource.org/licenses/MIT"
+                        distribution = "repo"
+                    }
+                }
+
+                scm {
+                    url = "https://github.com/null2264/Respro"
+                    connection = "scm:git:git@github.com:null2264/Respro.git"
+                    developerConnection = "scm:git:git@github.com:null2264/Respro.git"
+                }
+            }
+
             // add all the jars that should be included when publishing to maven
             artifact(remapJar) {
                 builtBy remapJar
